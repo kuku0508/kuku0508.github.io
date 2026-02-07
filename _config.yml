@@ -1,0 +1,19 @@
+title: "Kuku"
+description: "Statistics | Data Analysis & Predictive Modeling"
+url: "https://kuku0508.github.io"
+baseurl: ""
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+
+plugins:
+  - jekyll-include-cache
+
+minimal_mistakes_skin: "air"  # 也可試 "mint", "dark", "sunrise"
+
+locale: "zh-TW"
+timezone: "Asia/Taipei"
+
+author:
+  name: "kuku"
+  avatar: "/assets/images/avatar.png"
+  bio: "統計背景｜資料分析與預測建模｜重視可解釋性與模型診斷"
