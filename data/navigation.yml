@@ -1,9 +1,0 @@
-main:
-  - title: "首頁"
-    url: /
-  - title: "專案"
-    url: /projects/
-  - title: "關於我"
-    url: /about/
-  - title: "履歷"
-    url: /resume/
