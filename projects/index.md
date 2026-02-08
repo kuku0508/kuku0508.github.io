@@ -40,6 +40,25 @@ permalink: /projects/
       </div>
       <div class="project-card__footer"><span>查看專案 →</span></div>
     </a>
+    
+  <a class="project-card" href="/projects/kepler/">
+    <div class="project-card__body">
+      <h2 class="project-card__title">Kepler 望遠鏡資料集分析</h2>
+      <p class="project-card__desc">
+        從光度/時間序列資料出發，進行清理、特徵萃取與探索性分析，嘗試找出訊號模式與可用特徵，建立可重現的分析筆記。
+      </p>
+
+      <div class="project-card__meta">
+        <span class="tag">時間序列</span>
+        <span class="tag">特徵工程</span>
+        <span class="tag">資料清理</span>
+      </div>
+    </div>
+
+    <div class="project-card__footer">
+      <span>查看專案 →</span>
+    </div>
+  </a>
 
   </div>
 </div>
