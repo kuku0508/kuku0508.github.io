@@ -1,0 +1,66 @@
+/* Projects cards layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+/* Card */
+.project-card {
+  display: block;
+  text-decoration: none;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+/* Body */
+.project-card__body {
+  padding: 16px 16px 10px 16px;
+}
+
+.project-card__title {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.project-card__desc {
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Tags */
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* Footer */
+.project-card__footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(120, 120, 120, 0.18);
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.9;
+}
+
+/* Hover */
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(120, 120, 120, 0.45);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}

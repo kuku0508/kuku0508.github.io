@@ -3,6 +3,8 @@ title: 專案
 permalink: /projects/
 ---
 
+<link rel="stylesheet" href="/assets/css/projects.css">
+
 # 專案作品集
 
 <div class="projects-grid">
