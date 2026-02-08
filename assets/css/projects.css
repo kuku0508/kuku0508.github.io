@@ -64,3 +64,38 @@
   border-color: rgba(120, 120, 120, 0.45);
   box-shadow: 0 10px 22px rgba(0,0,0,0.12);
 }
+/* ===== Featured horizontal scroll ===== */
+.projects-featured {
+  margin-top: 10px;
+}
+
+.projects-hint {
+  opacity: 0.7;
+  margin: 6px 0 10px 0;
+  font-size: 14px;
+}
+
+.projects-scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 10px 4px 18px 4px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-scroll::-webkit-scrollbar {
+  height: 10px;
+}
+.projects-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(120, 120, 120, 0.35);
+}
+.projects-scroll::-webkit-scrollbar-track {
+  background: rgba(120, 120, 120, 0.10);
+}
+
+.project-card--featured {
+  flex: 0 0 360px; /* 精選卡片寬度，可改 320/420 */
+  scroll-snap-align: start;
+}
