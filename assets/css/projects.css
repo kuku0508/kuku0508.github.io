@@ -164,3 +164,14 @@
 .hero-btn:hover {
   border-color: rgba(120, 120, 120, 0.45);
 }
+
+.page__hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.page__hero-overlay {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
