@@ -6,19 +6,11 @@ layout: single
 excerpt: "以 2023–2025 資料建構站點互動網路，透過社群偵測與中心性分析呈現都市移動結構。"
 
 header:
-  overlay_image: /projects/youbike_sna/assets/cover.jpg
+  overlay_image: /projects/youbike_sna/assets/cover.png
   overlay_filter: 0.35
 
 classes: wide
 ---
-
-
-<div class="project-hero">
-  <div class="hero-card">
-    <div class="hero-media">
-      <img src="/projects/youbike_sna/assets/cover.png" alt="YouBike 路網封面圖">
-    </div>
-
     <div class="hero-body">
       <h1 class="hero-title">YouBike 站點互動網路與生活圈辨識</h1>
 
