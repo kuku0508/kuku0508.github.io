@@ -165,13 +165,15 @@
   border-color: rgba(120, 120, 120, 0.45);
 }
 
-.page__hero {
+/* ===== Minimal Mistakes overlay hero: make it more story-like ===== */
+.page__hero--overlay {
   min-height: 80vh;
   display: flex;
   align-items: center;
 }
 
-.page__hero-overlay {
-  padding-top: 120px;
-  padding-bottom: 120px;
+.page__hero--overlay .wrapper {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
+
