@@ -99,3 +99,68 @@
   flex: 0 0 360px; /* 精選卡片寬度，可改 320/420 */
   scroll-snap-align: start;
 }
+
+ /* ===== Project page: Hero card (Option C) ===== */
+
+.project-hero {
+  margin: 18px 0 20px 0;
+}
+
+.hero-card {
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-body {
+  padding: 16px 16px 14px 16px;
+}
+
+.hero-title {
+  margin: 0 0 8px 0;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-actions {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* simple button-like links */
+.hero-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.hero-btn:hover {
+  border-color: rgba(120, 120, 120, 0.45);
+}
