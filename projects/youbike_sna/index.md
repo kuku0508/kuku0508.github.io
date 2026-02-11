@@ -6,7 +6,7 @@ permalink: /projects/youbike_sna/
 <div class="project-hero">
   <div class="hero-card">
     <div class="hero-media">
-      <img src="/projects/youbike_sna/assets/cover.jpg" alt="YouBike 路網封面圖">
+      <img src="/projects/youbike_sna/assets/cover.png" alt="YouBike 路網封面圖">
     </div>
 
     <div class="hero-body">
