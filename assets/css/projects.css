@@ -179,10 +179,32 @@
   padding-bottom: 6rem;
 }
 
+/* ===== Academic style data box ===== */
+
 .data-box {
-  margin: 32px 0;
-  padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(120, 120, 120, 0.25);
-  border-radius: 14px;
+  margin: 36px 0;
+  padding: 22px 26px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.7;
 }
+
+.data-box h4 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.data-box ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.data-box li {
+  margin-bottom: 6px;
+}
+
