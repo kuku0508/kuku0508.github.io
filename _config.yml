@@ -15,5 +15,5 @@ timezone: "Asia/Taipei"
 
 author:
   name: "kuku"
-  avatar: "/assets/images/avatar.png"
+  avatar: "/assets/img/avatar.png"
   bio: "統計背景｜資料分析與預測建模｜重視可解釋性與模型診斷"
