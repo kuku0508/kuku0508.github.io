@@ -167,11 +167,12 @@
 
 /* ===== Minimal Mistakes overlay hero: make it more story-like ===== */
 .page__hero--overlay {
-  min-height: 85vh;          /* 再大一點點 */
+  min-height: 88vh;
   display: flex;
   align-items: center;
-  background-position: center 35%;  /* 👈 關鍵 */
+  background-position: center 40%;
 }
+
 
 .page__hero--overlay .wrapper {
   padding-top: 6rem;
