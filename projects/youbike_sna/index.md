@@ -146,5 +146,7 @@ YouBike 並非隨機分布的移動工具，
 
 
 <div class="map-credit">
-  Map data © OpenStreetMap contributors
+  Map rendering generated via MapToPoster.  
+  Base map data © OpenStreetMap contributors.
 </div>
+
