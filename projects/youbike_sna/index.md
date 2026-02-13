@@ -31,10 +31,10 @@ Youbike的出現讓我不必再買自行車，
 
 #### DATA SOURCE
 
-- 期間：2023 年 1 月 – 2025 年
 - 資料集： [臺北市公共自行車 2.0 租借紀錄](https://data.gov.tw/dataset/150635)
+- 使用資料時段：2023 年 1 月 – 2025 年
 - 提供單位：臺北市政府交通局
-- 授權方式：政府資料開放授權條款
+- 授權方式：政府資料開放授權條款 第一版
 
 </div>
 
@@ -145,3 +145,6 @@ YouBike 並非隨機分布的移動工具，
 也是為了在日常騎乘之中，多一份對風險的覺察。
 
 
+<div class="map-credit">
+  Map data © OpenStreetMap contributors
+</div>

@@ -208,3 +208,13 @@
   margin-bottom: 6px;
 }
 
+/* ===== Map attribution footer ===== */
+
+.map-credit {
+  margin-top: 60px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 13px;
+  opacity: 0.6;
+  text-align: right;
+}
