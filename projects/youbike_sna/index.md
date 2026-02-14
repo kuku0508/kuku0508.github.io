@@ -5,7 +5,7 @@ layout: single
 excerpt: "從日常騎乘出發，理解城市流動的結構與風險。"
 
 header:
-  overlay_image: /projects/YouBike_sna/assets/cover.png
+  overlay_image: /projects/youbike_sna/assets/cover.png
   overlay_filter: 0.5
 
 classes: wide
