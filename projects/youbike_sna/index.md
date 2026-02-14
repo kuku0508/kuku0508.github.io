@@ -29,7 +29,7 @@ Youbike的出現讓我不必再買自行車，
 
 <div class="data-box" markdown="1">
 
-#### DATA SOURCE
+#### 資料來源1 DATA SOURCE 1
 
 - 資料集： [臺北市公共自行車 2.0 租借紀錄](https://data.gov.tw/dataset/150635)
 - 使用資料時段：2023 年 1 月 – 2025 年
@@ -38,16 +38,29 @@ Youbike的出現讓我不必再買自行車，
 
 </div>
 
+<div class="data-box" markdown="1">
+
+#### 資料來源2 DATA SOURCE 2
+
+- 資料集： [臺北市A1及A2交通事故資料](https://data.taipei/dataset/detail?id=2f238b4f-1b27-4085-93e9-d684ef0e2735)
+- 使用資料時段：2023 年 – 2024 年
+- 提供單位：臺北市政府警察局交通大隊
+- 授權方式：公開
+
+</div>
 
 
-在這個專案中，我將：
+在這個專案中，我將使用：
 
-- **站點視為節點（nodes）**
-- **騎乘旅次視為連結（edges）**
-- 以旅次次數作為加權值，建構加權網路
+- **社會網路分析(Social Network Analysis)**
+- **社群偵測 - Louvain演算法**
+- **聚類分析 - K-means演算法、Hierarchical分群**
+- **預測自行車流量 - Brouter路經模擬**
+- **衡量高流量高風險之車禍點**
 
-透過這樣的轉換，  
-原本零散的日常移動，成為可以分析的城市結構。
+透過這些分析，  
+我們可以將大量的數據，轉換成Youbike的使用資訊，  
+以及特定路段的自行車風險評估。
 
 
 ---
