@@ -1,23 +1,23 @@
 ---
 title: "YouBike 站點互動網路與生活圈辨識"
-permalink: /projects/youbike_sna/
+permalink: /projects/YouBike_sna/
 layout: single
 excerpt: "從日常騎乘出發，理解城市流動的結構與風險。"
 
 header:
-  overlay_image: /projects/youbike_sna/assets/cover.png
+  overlay_image: /projects/YouBike_sna/assets/cover.png
   overlay_filter: 0.5
 
 classes: wide
 ---
 
-自從Youbike出現，他就是我最常使用的大眾運輸工具。  
+自從YouBike出現，他就是我最常使用的大眾運輸工具。  
 從家裡到學校、到捷運站，  
-Youbike的出現讓我不必再買自行車，  
+YouBike的出現讓我不必再買自行車，  
 不再需要擔心被偷走或是生鏽。
 
 他同時也承載著這個城市很大部分的流量，  
-承載流量的同時，關於自行車的問題也漸漸浮上水面  
+承載流量的同時，關於自行車的問題也漸漸浮上水面 ， 
 3個月內，光是台北市的自行車違規件數就有1,000多件。  
 
 我們好奇，擁有「自行車王國」美名的台灣，  
@@ -29,7 +29,7 @@ Youbike的出現讓我不必再買自行車，
 
 <div class="data-box" markdown="1">
 
-#### 資料來源1 DATA SOURCE 1
+#### DATA SOURCE 1
 
 - 資料集： [臺北市公共自行車 2.0 租借紀錄](https://data.gov.tw/dataset/150635)
 - 使用資料時段：2023 年 1 月 – 2025 年
@@ -40,7 +40,7 @@ Youbike的出現讓我不必再買自行車，
 
 <div class="data-box" markdown="1">
 
-#### 資料來源2 DATA SOURCE 2
+#### DATA SOURCE 2
 
 - 資料集： [臺北市A1及A2交通事故資料](https://data.taipei/dataset/detail?id=2f238b4f-1b27-4085-93e9-d684ef0e2735)
 - 使用資料時段：2023 年 – 2024 年
@@ -50,16 +50,21 @@ Youbike的出現讓我不必再買自行車，
 </div>
 
 
-在這個專案中，我將使用：
+在本專案中，我主要使用以下分析方法：
 
-- **社會網路分析(Social Network Analysis)**
-- **社群偵測 - Louvain演算法**
-- **聚類分析 - K-means演算法、Hierarchical分群**
-- **預測自行車流量 - Brouter路經模擬**
-- **衡量車禍路段 - EPDO、CBI**
+**一、社會網路分析(Social Network Analysis, SNA)**
+
+**二、社群辨識**  
+- **Louvain演算法**  
+- **K-means演算法**  
+- **Hierarchical分群**  
+
+**三、流量模擬與風險評估**  
+- **Brouter路經模擬**  
+- **EPDO、CBI 指標計算**  
 
 透過這些分析，  
-我們可以將大量的數據，轉換成Youbike的使用資訊，  
+我們可以將大量的數據，轉換成YouBike的使用資訊，  
 以及特定路段的自行車風險評估。
 
 
@@ -78,7 +83,7 @@ Youbike的出現讓我不必再買自行車，
 城市的生活圈，真的存在於資料之中。
 
 
-![Louvain 分群視覺化](/projects/youbike_sna/assets/community.png)
+![Louvain 分群視覺化](/projects/YouBike_sna/assets/community.png)
 
 > Louvain 演算法辨識出明顯社群結構，  
 > 社群分布與地理區域高度重疊。
@@ -103,7 +108,7 @@ YouBike 並非隨機分布的移動工具，
 而是嵌入於都市公共運輸系統之中。
 
 
-![中心性視覺化](/projects/youbike_sna/assets/centrality.png)
+![中心性視覺化](/projects/YouBike_sna/assets/centrality.png)
 
 
 ---
