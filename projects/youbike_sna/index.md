@@ -1,6 +1,6 @@
 ---
 title: "YouBike 站點互動網路與生活圈辨識"
-permalink: /projects/YouBike_sna/
+permalink: /projects/youbike_sna/
 layout: single
 excerpt: "從日常騎乘出發，理解城市流動的結構與風險。"
 
