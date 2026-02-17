@@ -236,3 +236,13 @@
   margin: 0 auto;
   display: block;
 }
+
+/* 只讓作者頭像置中 */
+.author__avatar {
+  text-align: center;
+}
+
+/* 讓文字區塊靠左 */
+.author__content {
+  text-align: left;
+}
