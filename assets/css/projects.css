@@ -228,21 +228,37 @@
 
 /* ===== Sidebar Profile Custom ===== */
 
+/* ===== Author Sidebar - Research Style ===== */
+
 .author__avatar img {
-  max-width: 180px;   /* 原本大約 90~100px */
-  width: 180px;
-  height: 180px;
+  width: 140px;        /* 頭像變大 */
+  height: 140px;
   border-radius: 50%;
-  margin: 0 auto;
   display: block;
+  margin: 0 auto 16px auto;
+  border: 3px solid rgba(0,0,0,0.06);
 }
 
-/* 只讓作者頭像置中 */
-.author__avatar {
+/* 名字 */
+.author__name {
   text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
 }
 
-/* 讓文字區塊靠左 */
+/* 內容區 */
 .author__content {
   text-align: left;
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.85;
+  padding: 0 6px;
 }
+
+/* 整體區塊留白 */
+.author__profile {
+  padding: 12px 8px 18px 8px;
+}
+
