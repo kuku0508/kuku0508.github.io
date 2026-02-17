@@ -16,4 +16,7 @@ timezone: "Asia/Taipei"
 author:
   name: "kuku"
   avatar: "/assets/img/avatar.png"
-  bio: "統計背景｜資料分析與預測建模｜重視可解釋性與模型診斷"
+  bio: |
+    淡江大學 統計與資料科學學系 學士  
+    資料分析  
+    資料預測

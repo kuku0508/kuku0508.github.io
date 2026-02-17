@@ -225,3 +225,22 @@
   font-size: 17px;
   line-height: 1.75;
 }
+
+/* ===== Sidebar Profile Custom ===== */
+
+.author__avatar {
+  text-align: center;
+}
+
+.author__avatar img {
+  max-width: 160px;   /* 原本大約 90~100px */
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.author__content {
+  text-align: center;
+}
