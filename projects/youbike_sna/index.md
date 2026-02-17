@@ -73,7 +73,7 @@ YouBike的出現讓我不必再買自行車，
 我們就是把所有的個體，根據一個標準來做連結，畫一個關係圖。
 
 <div style="text-align:center;">
-  <img src="/projects/youbike_sna/assets/sna_demo.png" width="1000">
+  <img src="/projects/youbike_sna/assets/sna_demo.png" width="500">
 </div>
 
 
