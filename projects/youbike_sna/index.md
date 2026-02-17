@@ -51,7 +51,7 @@ YouBike的出現讓我不必再買自行車，
 
 在本專案中，我主要使用以下分析方法：
 
-**一、社會網路分析(Social Network Analysis, SNA)**
+**一、社群網路分析(Social Network Analysis, SNA)**
 
 **二、社群辨識**  
 - **Louvain演算法**  
@@ -66,25 +66,16 @@ YouBike的出現讓我不必再買自行車，
 我們可以將大量的數據，轉換成YouBike的使用資訊，  
 以及特定路段的自行車風險評估。
 
-## 03 分群：看見城市的生活圈
+## 社群網路分析(Social Network Analysis, SNA)
 
-當社群分群成功時，我看到的不是抽象的網路圖。  
-而是一種熟悉的節奏。
+在這次的專案中，我們主要使用的方法叫做SNA，  
+所謂的SNA主要是在關注個體與個體之間的關係以及結構。  
+我們就是把所有的個體，根據一個標準來做連結，畫一個關係圖。
 
-多數騎乘都是短距離。  
-從家到捷運站，  
-或從捷運站到工作地點。
+<div style="text-align:center;">
+  <img src="/projects/youbike_sna/assets/sna_demo.png" width="1000">
+</div>
 
-這些短短的運輸，  
-在網路中形成了明確的群落。
-
-城市的生活圈，真的存在於資料之中。
-
-
-![Louvain 分群視覺化](/projects/YouBike_sna/assets/community.png)
-
-> Louvain 演算法辨識出明顯社群結構，  
-> 社群分布與地理區域高度重疊。
 
 
 ---
