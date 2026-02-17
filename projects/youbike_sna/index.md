@@ -72,7 +72,7 @@ YouBike的出現讓我不必再買自行車，
 所謂的SNA主要是在關注個體與個體之間的關係以及結構。  
 我們就是把所有的個體，根據一個標準來做連結，畫一個關係圖。
 
-<div style="text-align:center;">
+<div style="text-align:left;">
   <img src="/projects/youbike_sna/assets/sna_demo.png" width="500">
 </div>
 
