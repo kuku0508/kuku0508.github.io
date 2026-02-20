@@ -245,3 +245,34 @@ body.layout--single.wide.project .page__content {
   max-width: 980px !important;
   margin: 0 auto !important;
 }
+
+
+/* =====================================
+   Project hero full-bleed (滿版貼左右)
+   Only for: layout--single wide project
+===================================== */
+
+/* 避免滿版造成水平捲動條（很常見的小副作用） */
+body.layout--single.wide.project {
+  overflow-x: hidden;
+}
+
+/* 讓封面圖滿版 */
+body.layout--single.wide.project .page__hero--overlay {
+  width: 100vw !important;
+  max-width: none !important;
+
+  /* 這兩行是「跳出置中容器」的關鍵 */
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+
+  border-radius: 0 !important; /* 需要的話，避免左右邊有圓角空隙 */
+}
+
+/* 封面上的文字區仍維持你想要的閱讀寬度置中 */
+body.layout--single.wide.project .page__hero--overlay .wrapper {
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  padding-left: 16px;
+  padding-right: 16px;
+}
