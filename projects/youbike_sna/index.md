@@ -69,92 +69,48 @@ YouBike的出現讓我不必再買自行車，
 ## 社群網路分析(Social Network Analysis, SNA)
 
 在這次的專案中，我們主要使用的方法叫做SNA，  
-所謂的SNA主要是在關注個體與個體之間的關係以及結構。  
+所謂的SNA主要是在**關注個體與個體之間的關係**。  
 我們就是把所有的個體，根據一個標準來做連結，畫一個關係圖。
 
 <div style="text-align:left;">
   <img src="/projects/youbike_sna/assets/sna_demo.png" width="500">
 </div>
 
+在這個專案裡面，我們採用的標準是**流量**：
+
+- 節點(Nodes)：YouBike 站點
+- 連結(Edges)：站點之間的旅次
+- 權重(Weight)：旅次次數
+
+
 而在SNA之中，我們採用的指標有以下幾個：
 ### 加權度(Weighted Degree)
-加權度指的是
+加權度指的是節點所連結邊之權重總和，  
+反應一個節點與其他節點的互動強度。
+
+在這個專案中，代表站點在特定期間內的借車(Weighted In Degree)與還車(Weighted Out Degree)的次數和。公式如下：
+$$
+k_i^w=\sum_j w_{ij}+\sum_j w_{ji}
+$$
+
+其中$w_{ij}$站點i到站點j之間的流量，$w_{ji}$為站點j到站點i之間的流量。  
+Weighted in degree的公式如下：
+$$
+k_i^{in}=\sum_j w_{ji}
+$$
+
+Weighted out degree的公式如下：
+$$
+k_i^{out}=\sum_j w_{ij}
+$$
+
 
 ### 介數中心度(Betweenness Centrality)
 ### 特徵向量中心度(Eigenvector Centrality)
 ### 網頁排名(PageRank)
 ### 群聚係數(Clustering Coefficient)
 
-
-## 04 橋樑節點與轉運結構
-
-除了社群分群，我也分析了中心性指標：
-
-- Degree Centrality
-- Betweenness Centrality
-- PageRank
-
-具有高 betweenness 的站點，  
-多集中於大型轉運節點附近。
-
-這意味著：
-
-YouBike 並非隨機分布的移動工具，  
-而是嵌入於都市公共運輸系統之中。
-
-
-![中心性視覺化](/projects/YouBike_sna/assets/centrality.png)
-
-
----
-
-## 05 流動，也意味著風險
-
-在理解城市流動結構的同時，  
-我也開始思考另一個問題。
-
-當騎乘行為集中於特定橋樑型節點時，  
-是否也意味著風險的集中？
-
-若某些站點承載高度轉運流量，  
-交通事故的暴露機率是否也隨之提高？
-
-流動讓城市更有效率，  
-但也可能讓風險變得更加隱性而集中。
-
-未來若能結合事故資料與空間資訊，  
-或許能更具體地辨識潛在風險區域。
-
-對一般騎乘者而言，  
-理解這些結構，也是一種自我保護。
-
-
----
-
-## 06 本專案展現能力
-
-**資料處理與清理**
-- 大型騎乘資料整理
-- 加權網路建構
-
-**社群與網路分析**
-- Louvain 社群偵測
-- 中心性指標計算
-- 結構詮釋
-
-**視覺化與敘事轉譯**
-- 網路圖視覺化
-- 結構結果轉譯為生活語言
-- 將數據與城市觀察連結
-
-
----
-
-## 結語
-
-理解城市的流動，不只是為了看見結構。  
-也是為了在日常騎乘之中，多一份對風險的覺察。
-
+## 
 
 <div class="map-credit">
   Map rendering generated via MapToPoster.  
