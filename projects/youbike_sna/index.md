@@ -90,13 +90,15 @@ YouBike的出現讓我不必再買自行車，
 反應一個節點與其他節點的互動強度。
 
 在這個專案中，代表站點在特定期間內的借車(Weighted In Degree)與  
-還車(Weighted Out Degree)的次數和。公式如下：
+還車(Weighted Out Degree)的次數和。公式如下：  
+
 $$
 k_i^w=\sum_j w_{ij}+\sum_j w_{ji}
 $$
 
-其中$w_{ij}$站點i到站點j之間的流量，$w_{ji}$為站點j到站點i之間的流量。  
+其中$w_{ij}$站點i到站點j之間的流量，$w_{ji}$為站點$j$到站點$i$之間的流量。  
 Weighted in degree的公式如下：  
+
 $$
 k_i^{in}=\sum_j w_{ji}
 $$
