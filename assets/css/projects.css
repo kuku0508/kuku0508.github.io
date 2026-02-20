@@ -1,3 +1,7 @@
+/* =====================================
+   Projects (Index) - Cards & Layout
+===================================== */
+
 /* Projects cards layout */
 .projects-grid {
   display: grid;
@@ -64,6 +68,7 @@
   border-color: rgba(120, 120, 120, 0.45);
   box-shadow: 0 10px 22px rgba(0,0,0,0.12);
 }
+
 /* ===== Featured horizontal scroll ===== */
 .projects-featured {
   margin-top: 10px;
@@ -100,87 +105,52 @@
   scroll-snap-align: start;
 }
 
- /* ===== Project page: Hero card (Option C) ===== */
+/* =====================================
+   Project Pages (Detail) - Global System
+   Only applies to pages with class: project
+   (Front matter: classes: wide project)
+===================================== */
 
-.project-hero {
-  margin: 18px 0 20px 0;
+/* 1) 收窄內文寬度 + 真正置中（修正 wide 視覺偏右） */
+.project .page__inner-wrap,
+.project .page__content {
+  max-width: 980px;  /* 建議 920~1040 之間微調 */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-card {
-  border: 1px solid rgba(120, 120, 120, 0.25);
-  border-radius: 18px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+/* 2) 專案頁文字大小與閱讀行距（只影響專案頁） */
+.project .page__content {
+  font-size: 17px;
+  line-height: 1.75;
 }
 
-.hero-media img {
+/* 3) 專案頁圖片：自動置中 + 響應式 */
+.project .page__content img {
   display: block;
-  width: 100%;
+  margin: 1.2rem auto;
+  max-width: 100%;
   height: auto;
 }
 
-.hero-body {
-  padding: 16px 16px 14px 16px;
-}
-
-.hero-title {
-  margin: 0 0 8px 0;
-  font-size: 26px;
-  line-height: 1.15;
-}
-
-.hero-subtitle {
-  margin: 0 0 12px 0;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-}
-
-.hero-actions {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-/* simple button-like links */
-.hero-btn {
-  display: inline-block;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(120, 120, 120, 0.25);
-  text-decoration: none;
-  font-size: 14px;
-  opacity: 0.95;
-}
-
-.hero-btn:hover {
-  border-color: rgba(120, 120, 120, 0.45);
-}
-
-/* ===== Minimal Mistakes overlay hero: make it more story-like ===== */
-.page__hero--overlay {
+/* 4) Minimal Mistakes overlay hero：只在專案頁變更（沉浸感） */
+.project .page__hero--overlay {
   min-height: 88vh;
   display: flex;
   align-items: center;
   background-position: center 40%;
 }
 
-
-.page__hero--overlay .wrapper {
+.project .page__hero--overlay .wrapper {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
 
-/* ===== Academic style data box ===== */
+/* =====================================
+   Project Pages - Components
+===================================== */
 
+/* Academic style data box (資料來源 box) */
 .data-box {
   margin: 36px 0;
   padding: 22px 26px;
@@ -208,8 +178,7 @@
   margin-bottom: 6px;
 }
 
-/* ===== Map attribution footer ===== */
-
+/* Map attribution footer */
 .map-credit {
   margin-top: 60px;
   padding-top: 18px;
@@ -219,23 +188,19 @@
   text-align: right;
 }
 
-/* Make project article text slightly smaller */
-
-.wide .page__content {
-  font-size: 17px;
-  line-height: 1.75;
-}
-
-/* ===== Sidebar Profile Custom ===== */
+/* =====================================
+   Sidebar Profile - Avatar only centered
+===================================== */
 
 .author__avatar {
   text-align: center;
 }
 
 .author__avatar img {
-  max-width: 160px;   /* 原本大約 90~100px */
+  max-width: 160px;
   width: 160px;
   height: 160px;
+  object-fit: cover;    /* 避免變橢圓 */
   border-radius: 50%;
   margin: 0 auto;
   display: block;
@@ -243,11 +208,4 @@
 
 .author__content {
   text-align: left;
-}
-
-.project .page__inner-wrap,
-.project .page__content {
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
 }
