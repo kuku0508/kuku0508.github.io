@@ -209,3 +209,39 @@
 .author__content {
   text-align: left;
 }
+
+/* 專案頁：把 layout 層級可能的推移先歸零 */
+.project .page,
+.project .page__inner-wrap,
+.project .page__content {
+  float: none !important;
+  width: 100% !important;
+}
+
+/* 真的置中（收窄閱讀寬度） */
+.project .page__content,
+.project .page__inner-wrap {
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 如果是外層 initial-content 在推，這行通常很關鍵 */
+.project .initial-content {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 修正 project 頁 wide 偏右 */
+body.layout--single.wide.project .initial-content,
+body.layout--single.wide.project .page {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+}
+
+/* 控制閱讀寬度 */
+body.layout--single.wide.project .page__content {
+  max-width: 980px !important;
+  margin: 0 auto !important;
+}
