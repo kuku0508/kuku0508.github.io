@@ -103,7 +103,8 @@ $$
 k_i^{in}=\sum_j w_{ji}
 $$
 
-Weighted out degree的公式如下：  
+Weighted out degree的公式如下： 
+
 $$
 k_i^{out}=\sum_j w_{ij}
 $$
