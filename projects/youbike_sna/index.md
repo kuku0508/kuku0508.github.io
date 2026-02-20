@@ -3,6 +3,7 @@ title: "YouBike 站點互動網路與生活圈辨識"
 permalink: /projects/youbike_sna/
 layout: single
 excerpt: "從日常騎乘出發，理解城市流動的結構與風險。"
+math: true
 
 header:
   overlay_image: /projects/youbike_sna/assets/cover.png
@@ -88,7 +89,8 @@ YouBike的出現讓我不必再買自行車，
 加權度指的是節點所連結邊之權重總和，  
 反應一個節點與其他節點的互動強度。
 
-在這個專案中，代表站點在特定期間內的借車(Weighted In Degree)與還車(Weighted Out Degree)的次數和。公式如下：
+在這個專案中，代表站點在特定期間內的借車(Weighted In Degree)與  
+還車(Weighted Out Degree)的次數和。公式如下：
 $$
 k_i^w=\sum_j w_{ij}+\sum_j w_{ji}
 $$
