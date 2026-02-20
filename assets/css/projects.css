@@ -271,7 +271,7 @@ body.layout--single.wide.project .page__hero--overlay {
 
 /* 封面上的文字區仍維持你想要的閱讀寬度置中 */
 body.layout--single.wide.project .page__hero--overlay .wrapper {
-  max-width: 980px !important;
+  max-width: 1180px !important;
   margin: 0 auto !important;
   padding-left: 16px;
   padding-right: 16px;
