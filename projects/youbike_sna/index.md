@@ -94,12 +94,12 @@ k_i^w=\sum_j w_{ij}+\sum_j w_{ji}
 $$
 
 其中$w_{ij}$站點i到站點j之間的流量，$w_{ji}$為站點j到站點i之間的流量。  
-Weighted in degree的公式如下：
+Weighted in degree的公式如下：  
 $$
 k_i^{in}=\sum_j w_{ji}
 $$
 
-Weighted out degree的公式如下：
+Weighted out degree的公式如下：  
 $$
 k_i^{out}=\sum_j w_{ij}
 $$
