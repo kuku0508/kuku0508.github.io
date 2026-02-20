@@ -244,3 +244,10 @@
 .author__content {
   text-align: left;
 }
+
+.project .page__inner-wrap,
+.project .page__content {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}

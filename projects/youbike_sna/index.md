@@ -9,7 +9,7 @@ header:
   overlay_image: /projects/youbike_sna/assets/cover.png
   overlay_filter: 0.5
 
-classes: wide
+classes: wide project
 ---
 
 自從YouBike出現，他就是我最常使用的大眾運輸工具。  
