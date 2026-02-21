@@ -96,13 +96,12 @@ YouBike的出現讓我不必再買自行車，
   <div class="formula-label">Weighted Degree</div>
 
   $$
-  WD(v) = \sum_{u \in N(v)} w_{vu}
+  k_i^w=\sum_j w_{ij}+\sum_j w_{ji}
   $$
 
 </div>
 
 其中$w_{ij}$站點 i 到站點 j 之間的流量，$w_{ji}$為站點 j 到站點 i 之間的流量。  
-Weighted in degree的公式如下：  
 
 <div class="formula-box">
   <div class="formula-label">Weighted In-Degree</div>
@@ -112,8 +111,6 @@ Weighted in degree的公式如下：
   $$
 
 </div>
-
-Weighted out degree的公式如下： 
 
 <div class="formula-box">
   <div class="formula-label">Weighted Out-Degree</div>
@@ -126,7 +123,7 @@ Weighted out degree的公式如下：
 
 ### 介數中心度（Betweenness Centrality）
 介數中心度用來衡量一個節點位於多少條最短路徑之上。  
-如果一個節點經常出現在其他節點之間的最短路徑中，
+一個節點經常出現在其他節點之間的最短路徑中，
 則它具有較高的中介能力。
 
 **在本專案中的意義：**  
