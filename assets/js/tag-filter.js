@@ -18,7 +18,7 @@
     var ENTERING_CLASS = "is-entering";
     var VISIBLE_CLASS = "is-visible";
     var LEAVING_CLASS = "is-leaving";
-    var TRANSITION_MS = 220;
+    var TRANSITION_MS = 280;
 
     var itemsContainer = root.querySelector("[data-filter-items]");
     if (!itemsContainer) return;
@@ -38,11 +38,6 @@
     var emptyNode = root.querySelector("[data-filter-empty]");
     var hideJobs = new WeakMap();
     var hasRendered = false;
-    var reduceMotion = false;
-
-    if (window.matchMedia) {
-      reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    }
 
     function clearHideJob(item) {
       var job = hideJobs.get(item);
@@ -154,7 +149,7 @@
       var selected = getSelectedTokens();
       var mode = getMode();
       var visibleCount = 0;
-      var shouldAnimate = hasRendered && !reduceMotion;
+      var shouldAnimate = hasRendered;
 
       items.forEach(function (item, index) {
         var wasVisible = !item.hidden && !item.classList.contains(HIDDEN_CLASS);

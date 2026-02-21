@@ -375,13 +375,13 @@ body.layout--single.wide.portal-archive .page__content {
   opacity: 1;
   transform: translateY(0);
   transform-origin: center top;
-  transition: opacity 220ms ease, transform 220ms ease;
+  transition: opacity 280ms ease, transform 280ms ease;
   will-change: opacity, transform;
 }
 
 .is-entering {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(10px);
 }
 
 .is-visible {
@@ -391,7 +391,7 @@ body.layout--single.wide.portal-archive .page__content {
 
 .is-leaving {
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translateY(-10px);
   pointer-events: none;
 }
 
@@ -413,12 +413,6 @@ body.layout--single.wide.portal-archive .page__content {
 .sidebar .author__content .profile-stats__item strong {
   font-size: 16px;
   color: #1f3644;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-filter-items] > [data-tags] {
-    transition: none;
-  }
 }
 
 @media (max-width: 960px) {
