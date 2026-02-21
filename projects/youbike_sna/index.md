@@ -50,7 +50,7 @@ YouBike的出現讓我不必再買自行車，
 
 </div>
 
-在本專案中，我主要使用以下分析方法：
+在本專案中，我們主要使用以下分析方法：
 
 **一、社群網路分析(Social Network Analysis, SNA)**
 
@@ -89,7 +89,7 @@ YouBike的出現讓我不必再買自行車，
 加權度指的是節點所連結邊之權重總和，  
 反應一個節點與其他節點的互動強度。
 
-在這個專案中，代表站點在特定期間內的借車(Weighted In Degree)與  
+在這個專案中，代表站點 i 在特定期間內的借車(Weighted In Degree)與  
 還車(Weighted Out Degree)的次數和。公式如下：  
 
 <div class="formula-box">

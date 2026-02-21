@@ -1,6 +1,14 @@
 main:
   - title: "首頁"
     url: /
+  - title: "文章"
+    url: /articles/
+  - title: "分類"
+    url: /categories/
+  - title: "標籤"
+    url: /tags/
+  - title: "時間軸"
+    url: /archives/
   - title: "專案"
     url: /projects/
   - title: "關於我"

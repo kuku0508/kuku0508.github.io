@@ -1,5 +1,5 @@
 title: "Kuku"
-description: "Statistics | Data Analysis & Predictive Modeling"
+description: "Portfolio and article notes on data analysis, modeling, and visualization"
 url: "https://kuku0508.github.io"
 baseurl: ""
 
@@ -20,3 +20,14 @@ author:
     淡江大學 統計與資料科學學系  
     資料分析  
     資料預測
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: false
