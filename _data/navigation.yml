@@ -5,8 +5,6 @@ main:
     url: /articles/
   - title: "分類"
     url: /categories/
-  - title: "標籤"
-    url: /tags/
   - title: "時間軸"
     url: /archives/
   - title: "專案"

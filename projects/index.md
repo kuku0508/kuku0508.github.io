@@ -1,129 +1,103 @@
 ---
-title: 專案
+layout: single
+title: "專案"
 permalink: /projects/
+classes: wide portal-archive projects-page
 ---
 
-# 專案作品集
+<div class="portal-shell">
+  <section class="portal-card">
+    <h1 class="portal-card__title">專案作品集</h1>
+    <p class="post-item__excerpt">可透過標籤勾選快速篩選，預覽後可直接點進專案頁。</p>
 
-## 精選專案
-<div class="projects-featured">
-  <div class="projects-hint">提示：可以左右滑動查看精選卡片 →</div>
-
-  <div class="projects-scroll">
-
-    <a class="project-card project-card--featured" href="/projects/youbike_sna/">
-      <div class="project-card__body">
-        <h2 class="project-card__title">YouBike 站點互動網路與生活圈辨識</h2>
-        <p class="project-card__desc">
-          以 2023–2025 站點流量/旅次建構站點網路，透過 SNA 與社群偵測辨識站點角色與社群結構，並以地圖視覺化呈現生活圈與交通節點特性。
-        </p>
-        <div class="project-card__meta">
-          <span class="tag">SNA</span>
-          <span class="tag">社群偵測</span>
-          <span class="tag">視覺化</span>
+    {% if site.data.projects and site.data.projects.size > 0 %}
+    <section class="tag-filter" data-filter-scope="projects">
+      <div class="tag-filter__top">
+        <strong class="tag-filter__label">標籤篩選</strong>
+        <div class="filter-mode" role="radiogroup" aria-label="專案篩選模式">
+          <input type="radio" id="projects-mode-or" name="filter-mode-projects" value="or" checked>
+          <label for="projects-mode-or">OR</label>
+          <input type="radio" id="projects-mode-and" name="filter-mode-projects" value="and">
+          <label for="projects-mode-and">AND</label>
         </div>
+        <button type="button" class="filter-reset" data-filter-reset>清除篩選</button>
       </div>
-      <div class="project-card__footer"><span>查看專案 →</span></div>
-    </a>
 
-    <a class="project-card project-card--featured" href="/projects/survival_analysis/">
-      <div class="project-card__body">
-        <h2 class="project-card__title">Survival Analysis（設限資料）</h2>
-        <p class="project-card__desc">
-          針對含設限的時間到事件資料，整理分析流程：資料處理、存活曲線、模型建構與解讀。重點放在結果是否能被清楚解釋。
-        </p>
-        <div class="project-card__meta">
-          <span class="tag">存活分析</span>
-          <span class="tag">設限</span>
-          <span class="tag">模型解釋</span>
-        </div>
+      <p class="filter-summary" data-filter-count></p>
+
+      {% assign project_tag_string = "" %}
+      {% for project in site.data.projects %}
+        {% for tag in project.tags %}
+          {% assign project_tag_string = project_tag_string | append: tag | append: "||" %}
+        {% endfor %}
+      {% endfor %}
+      {% assign project_tags = project_tag_string | split: "||" | uniq | sort %}
+
+      <div class="filter-chip-list">
+        {% for tag_name in project_tags %}
+          {% if tag_name != "" %}
+            {% assign project_tag_count = 0 %}
+            {% for project in site.data.projects %}
+              {% if project.tags contains tag_name %}
+                {% assign project_tag_count = project_tag_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            {% assign tag_token = tag_name | downcase | replace: " ", "-" | replace: "/", "-" | replace: "#", "" | replace: ",", "" %}
+            <label class="filter-chip">
+              <input type="checkbox" value="{{ tag_token }}">
+              <span>#{{ tag_name }} ({{ project_tag_count }})</span>
+            </label>
+          {% endif %}
+        {% endfor %}
       </div>
-      <div class="project-card__footer"><span>查看專案 →</span></div>
-    </a>
-    
-  <a class="project-card" href="/projects/kepler/">
-    <div class="project-card__body">
-      <h2 class="project-card__title">Kepler 望遠鏡資料集分析</h2>
-      <p class="project-card__desc">
-        從光度/時間序列資料出發，進行清理、特徵萃取與探索性分析，嘗試找出訊號模式與可用特徵，建立可重現的分析筆記。
+
+      <div class="projects-grid" data-filter-items>
+        {% for project in site.data.projects %}
+        {% capture project_tokens %}
+          {% if project.tags and project.tags.size > 0 %}
+            {% for tag in project.tags %}
+              {{ tag | downcase | replace: " ", "-" | replace: "/", "-" | replace: "#", "" | replace: ",", "" }}{% unless forloop.last %} {% endunless %}
+            {% endfor %}
+          {% endif %}
+        {% endcapture %}
+        <a class="project-card project-card--tile" href="{{ project.url | relative_url }}" data-tags="{{ project_tokens | strip }}">
+          <div class="project-card__media">
+            {% if project.image %}
+            <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+            {% else %}
+            <div class="project-card__placeholder">
+              <span>PROJECT DEMO</span>
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="project-card__body">
+            <h2 class="project-card__title">{{ project.title }}</h2>
+            <p class="project-card__desc">{{ project.summary }}</p>
+            {% if project.tags and project.tags.size > 0 %}
+            <div class="project-card__meta">
+              {% for tag in project.tags %}
+              <span class="tag">#{{ tag }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <div class="project-card__footer">
+            <span>查看專案 →</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+      <p class="filter-empty" data-filter-empty hidden>
+        找不到符合條件的專案，請調整勾選標籤或切換 OR/AND。
       </p>
-
-      <div class="project-card__meta">
-        <span class="tag">時間序列</span>
-        <span class="tag">特徵工程</span>
-        <span class="tag">資料清理</span>
-      </div>
-    </div>
-
-    <div class="project-card__footer">
-      <span>查看專案 →</span>
-    </div>
-  </a>
-
-  </div>
-</div>
-
----
-
-## 全部專案
-<div class="projects-grid">
-  <!-- Card 1 -->
-  <a class="project-card" href="/projects/youbike_sna/">
-    <div class="project-card__body">
-      <h2 class="project-card__title">YouBike 站點互動網路與生活圈辨識</h2>
-      <p class="project-card__desc">
-        以 2023–2025 YouBike 站點流量/旅次資料建構站點網路，透過 SNA 與社群偵測辨識站點角色與社群結構，並用地圖視覺化呈現「生活圈」與交通節點特性。
-      </p>
-
-      <div class="project-card__meta">
-        <span class="tag">SNA</span>
-        <span class="tag">社群偵測</span>
-        <span class="tag">視覺化</span>
-      </div>
-    </div>
-
-    <div class="project-card__footer">
-      <span>查看專案 →</span>
-    </div>
-  </a>
-
-  <!-- Card 2 -->
-  <a class="project-card" href="/projects/survival_analysis/">
-    <div class="project-card__body">
-      <h2 class="project-card__title">Survival Analysis（設限資料）</h2>
-      <p class="project-card__desc">
-        針對含設限的時間到事件資料進行分析，整理完整流程：資料處理、存活曲線、模型建構與解讀。重點放在「結果能不能被清楚解釋」。
-      </p>
-
-      <div class="project-card__meta">
-        <span class="tag">存活分析</span>
-        <span class="tag">設限</span>
-        <span class="tag">模型解釋</span>
-      </div>
-    </div>
-
-    <div class="project-card__footer">
-      <span>查看專案 →</span>
-    </div>
-  </a>
-
-  <!-- Card 3 -->
-  <a class="project-card" href="/projects/kepler/">
-    <div class="project-card__body">
-      <h2 class="project-card__title">Kepler 望遠鏡資料集分析</h2>
-      <p class="project-card__desc">
-        從光度/時間序列資料出發，進行清理、特徵萃取與探索性分析，嘗試找出訊號模式與可用特徵，建立可重現的分析筆記。
-      </p>
-
-      <div class="project-card__meta">
-        <span class="tag">時間序列</span>
-        <span class="tag">特徵工程</span>
-        <span class="tag">資料清理</span>
-      </div>
-    </div>
-
-    <div class="project-card__footer">
-      <span>查看專案 →</span>
-    </div>
-  </a>
+    </section>
+    {% else %}
+    <article class="post-item">
+      <p class="post-item__excerpt">目前尚無專案資料。</p>
+    </article>
+    {% endif %}
+  </section>
 </div>

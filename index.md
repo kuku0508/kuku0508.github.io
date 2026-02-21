@@ -34,8 +34,7 @@ classes: wide portal-home
               {% if post.tags and post.tags.size > 0 %}
               <div class="post-item__chips">
                 {% for tag in post.tags limit: 4 %}
-                {% assign tag_anchor = tag | replace: " ", "-" | replace: "/", "-" | replace: "#", "" %}
-                <a class="chip" href="{{ '/tags/' | relative_url }}#{{ tag_anchor }}">#{{ tag }}</a>
+                <a class="chip" href="{{ '/articles/' | relative_url }}">#{{ tag }}</a>
                 {% endfor %}
               </div>
               {% endif %}
@@ -83,7 +82,6 @@ classes: wide portal-home
         <ul class="quick-links">
           <li><a href="{{ '/articles/' | relative_url }}">文章總覽</a></li>
           <li><a href="{{ '/categories/' | relative_url }}">文章分類</a></li>
-          <li><a href="{{ '/tags/' | relative_url }}">文章標籤</a></li>
           <li><a href="{{ '/archives/' | relative_url }}">時間軸</a></li>
           <li><a href="{{ '/projects/' | relative_url }}">專案作品集</a></li>
           <li><a href="{{ '/about/' | relative_url }}">關於我</a></li>
