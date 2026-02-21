@@ -15,7 +15,11 @@
 
   function setupFilter(root) {
     var HIDDEN_CLASS = "is-filter-hidden";
-    var REVEAL_CLASS = "is-filter-reveal";
+    var ENTERING_CLASS = "is-entering";
+    var VISIBLE_CLASS = "is-visible";
+    var LEAVING_CLASS = "is-leaving";
+    var TRANSITION_MS = 220;
+
     var itemsContainer = root.querySelector("[data-filter-items]");
     if (!itemsContainer) return;
 
@@ -32,7 +36,89 @@
     var resetButton = root.querySelector("[data-filter-reset]");
     var countNode = root.querySelector("[data-filter-count]");
     var emptyNode = root.querySelector("[data-filter-empty]");
+    var hideJobs = new WeakMap();
     var hasRendered = false;
+    var reduceMotion = false;
+
+    if (window.matchMedia) {
+      reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function clearHideJob(item) {
+      var job = hideJobs.get(item);
+      if (!job) return;
+
+      item.removeEventListener("transitionend", job.onTransitionEnd);
+      item.removeEventListener("transitioncancel", job.onTransitionCancel);
+      window.clearTimeout(job.fallbackTimer);
+      hideJobs.delete(item);
+    }
+
+    function finalizeHide(item) {
+      clearHideJob(item);
+      item.classList.remove(ENTERING_CLASS, VISIBLE_CLASS, LEAVING_CLASS);
+      item.classList.add(HIDDEN_CLASS);
+      item.hidden = true;
+      item.setAttribute("aria-hidden", "true");
+    }
+
+    function showItem(item, animate) {
+      clearHideJob(item);
+      item.hidden = false;
+      item.classList.remove(HIDDEN_CLASS, LEAVING_CLASS);
+      item.setAttribute("aria-hidden", "false");
+
+      if (!animate) {
+        item.classList.remove(ENTERING_CLASS);
+        item.classList.add(VISIBLE_CLASS);
+        return;
+      }
+
+      item.classList.remove(VISIBLE_CLASS);
+      item.classList.add(ENTERING_CLASS);
+
+      window.requestAnimationFrame(function () {
+        if (item.hidden || item.classList.contains(HIDDEN_CLASS)) return;
+        item.classList.add(VISIBLE_CLASS);
+        item.classList.remove(ENTERING_CLASS);
+      });
+    }
+
+    function hideItem(item, animate) {
+      clearHideJob(item);
+
+      if (!animate) {
+        finalizeHide(item);
+        return;
+      }
+
+      item.classList.remove(ENTERING_CLASS, VISIBLE_CLASS);
+      item.classList.add(LEAVING_CLASS);
+      item.setAttribute("aria-hidden", "true");
+
+      var finished = false;
+      var job = {
+        onTransitionEnd: function (event) {
+          if (event.target !== item) return;
+          complete();
+        },
+        onTransitionCancel: function () {
+          complete();
+        },
+        fallbackTimer: 0,
+      };
+
+      function complete() {
+        if (finished) return;
+        finished = true;
+        finalizeHide(item);
+      }
+
+      job.fallbackTimer = window.setTimeout(complete, TRANSITION_MS + 80);
+      hideJobs.set(item, job);
+      item.addEventListener("transitionend", job.onTransitionEnd);
+      item.addEventListener("transitioncancel", job.onTransitionCancel);
+    }
 
     function getMode() {
       var checked = modeInputs.find(function (input) {
@@ -68,22 +154,28 @@
       var selected = getSelectedTokens();
       var mode = getMode();
       var visibleCount = 0;
+      var shouldAnimate = hasRendered && !reduceMotion;
 
       items.forEach(function (item, index) {
-        var wasHidden = item.classList.contains(HIDDEN_CLASS) || item.hidden;
+        var wasVisible = !item.hidden && !item.classList.contains(HIDDEN_CLASS);
         var isVisible = matches(itemTokens[index], selected, mode);
-        item.hidden = !isVisible;
-        item.classList.toggle(HIDDEN_CLASS, !isVisible);
-        item.setAttribute("aria-hidden", String(!isVisible));
 
         if (isVisible) {
-          item.classList.remove(REVEAL_CLASS);
-          if (hasRendered && selected.length && wasHidden) {
-            void item.offsetWidth;
-            item.classList.add(REVEAL_CLASS);
+          if (wasVisible) {
+            clearHideJob(item);
+            item.classList.remove(ENTERING_CLASS, LEAVING_CLASS, HIDDEN_CLASS);
+            item.hidden = false;
+            item.classList.add(VISIBLE_CLASS);
+            item.setAttribute("aria-hidden", "false");
+          } else {
+            showItem(item, shouldAnimate);
           }
         } else {
-          item.classList.remove(REVEAL_CLASS);
+          if (wasVisible) {
+            hideItem(item, shouldAnimate);
+          } else {
+            finalizeHide(item);
+          }
         }
 
         if (isVisible) visibleCount += 1;

@@ -372,23 +372,27 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 [data-filter-items] > [data-tags] {
+  opacity: 1;
+  transform: translateY(0);
   transform-origin: center top;
+  transition: opacity 220ms ease, transform 220ms ease;
+  will-change: opacity, transform;
 }
 
-.is-filter-reveal {
-  animation: filter-item-reveal 0.24s ease;
+.is-entering {
+  opacity: 0;
+  transform: translateY(6px);
 }
 
-@keyframes filter-item-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
+.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.is-leaving {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
 }
 
 .sidebar .author__content .profile-stats {
@@ -412,8 +416,8 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .is-filter-reveal {
-    animation: none;
+  [data-filter-items] > [data-tags] {
+    transition: none;
   }
 }
 
