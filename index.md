@@ -81,28 +81,10 @@ classes: wide portal-home
         <h2 class="portal-card__title">站內導覽</h2>
         <ul class="quick-links">
           <li><a href="{{ '/articles/' | relative_url }}">文章總覽</a></li>
-          <li><a href="{{ '/categories/' | relative_url }}">文章分類</a></li>
           <li><a href="{{ '/archives/' | relative_url }}">時間軸</a></li>
           <li><a href="{{ '/projects/' | relative_url }}">專案作品集</a></li>
           <li><a href="{{ '/about/' | relative_url }}">關於我</a></li>
         </ul>
-      </section>
-
-      <section class="portal-card">
-        <h2 class="portal-card__title">近期分類</h2>
-        {% if site.categories and site.categories.size > 0 %}
-          {% assign sorted_categories = site.categories | sort %}
-          <div class="post-item__chips">
-            {% for category in sorted_categories limit: 10 %}
-            {% assign category_anchor = category[0] | replace: " ", "-" | replace: "/", "-" | replace: "#", "" %}
-            <a class="chip" href="{{ '/categories/' | relative_url }}#{{ category_anchor }}">
-              {{ category[0] }} ({{ category[1].size }})
-            </a>
-            {% endfor %}
-          </div>
-        {% else %}
-          <p class="post-item__excerpt">分類會在新增文章後自動出現。</p>
-        {% endif %}
       </section>
     </aside>
   </div>

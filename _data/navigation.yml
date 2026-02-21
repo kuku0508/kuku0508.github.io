@@ -3,8 +3,6 @@ main:
     url: /
   - title: "文章"
     url: /articles/
-  - title: "分類"
-    url: /categories/
   - title: "時間軸"
     url: /archives/
   - title: "專案"
