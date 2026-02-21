@@ -21,8 +21,8 @@ YouBike的出現讓我不必再買自行車，
 承載流量的同時，關於自行車的問題也漸漸浮上水面 。  
 3個月內，光是台北市的自行車違規件數就有1,000多件。  
 
-我們好奇，擁有「自行車王國」美名的台灣，  
-自行車的處境，究竟是什麼樣子的?  
+我們好奇，在擁有「自行車王國」美名的台灣，  
+自行車的實際騎乘環境究竟是什麼樣子?  
 這個大眾運輸是如何被民眾使用?  
 又是怎麼與交通系統交互的呢?  
 
@@ -60,7 +60,7 @@ YouBike的出現讓我不必再買自行車，
 - **Hierarchical分群**  
 
 **三、流量模擬與風險評估**  
-- **Brouter路經模擬**  
+- **Brouter路徑模擬**  
 - **EPDO、CBI 指標計算**  
 
 透過這些分析，  
@@ -92,28 +92,82 @@ YouBike的出現讓我不必再買自行車，
 在這個專案中，代表站點在特定期間內的借車(Weighted In Degree)與  
 還車(Weighted Out Degree)的次數和。公式如下：  
 
-$$
-k_i^w=\sum_j w_{ij}+\sum_j w_{ji}
-$$
+<div class="formula-box">
+  <div class="formula-label">Weighted Degree</div>
 
-其中$w_{ij}$站點i到站點j之間的流量，$w_{ji}$為站點$j$到站點$i$之間的流量。  
+  $$
+  WD(v) = \sum_{u \in N(v)} w_{vu}
+  $$
+
+</div>
+
+其中$w_{ij}$站點 i 到站點 j 之間的流量，$w_{ji}$為站點 j 到站點 i 之間的流量。  
 Weighted in degree的公式如下：  
 
-$$
-k_i^{in}=\sum_j w_{ji}
-$$
+<div class="formula-box">
+  <div class="formula-label">Weighted In-Degree</div>
+
+  $$
+  W_{in}(v) = \sum_{u} w_{uv}
+  $$
+
+</div>
 
 Weighted out degree的公式如下： 
 
-$$
-k_i^{out}=\sum_j w_{ij}
-$$
+<div class="formula-box">
+  <div class="formula-label">Weighted Out-Degree</div>
 
+  $$
+  W_{out}(v) = \sum_{u} w_{vu}
+  $$
 
-### 介數中心度(Betweenness Centrality)
-### 特徵向量中心度(Eigenvector Centrality)
-### 網頁排名(PageRank)
-### 群聚係數(Clustering Coefficient)
+</div>
+
+### 介數中心度（Betweenness Centrality）
+介數中心度用來衡量一個節點位於多少條最短路徑之上。  
+如果一個節點經常出現在其他節點之間的最短路徑中，
+則它具有較高的中介能力。
+
+**在本專案中的意義：**  
+高介數站點往往是轉運節點，
+例如捷運站周邊的 YouBike 站點。  
+它們在不同生活圈之間扮演橋樑角色，
+連結多個社群。
+
+### 特徵向量中心度（Eigenvector Centrality）
+
+**原生定義：**  
+特徵向量中心度不僅考慮連結數量，
+還考慮「你連到的人是否重要」。
+
+換句話說，連到高影響力節點的節點，
+自身也會獲得較高的重要性分數。
+
+**在本專案中的意義：**  
+此指標可辨識位於高影響力區域中的站點，
+例如核心商業區或高流動區域。
+
+### PageRank
+
+**原生定義：**  
+PageRank 是基於隨機遊走理論，
+衡量節點被「訪問」的機率。
+
+**在本專案中的意義：**  
+若將騎乘行為視為流動過程，
+則 PageRank 可以理解為：
+一名隨機騎乘者最終停留於某站點的相對機率。
+
+### 群聚係數（Clustering Coefficient）
+
+**原生定義：**  
+群聚係數衡量一個節點的鄰居之間彼此連結的程度。
+
+**在本專案中的意義：**  
+若某些站點之間高度互通，
+代表該區域形成明顯的生活圈，
+例如住宅區或校園周邊。
 
 ## 
 

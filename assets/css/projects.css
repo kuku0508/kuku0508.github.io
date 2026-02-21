@@ -276,3 +276,32 @@ body.layout--single.wide.project .page__hero--overlay .wrapper {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+/* =====================================
+   Formula Box (Project pages only)
+===================================== */
+
+.project .formula-box {
+  position: relative;
+  margin: 36px 0;
+  padding: 28px 24px 22px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 14px;
+  text-align: center;
+  border-left: 4px solid #8B6B4E;
+}
+
+/* 左上角標籤 */
+.project .formula-label {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  background: #fff;
+  padding: 4px 10px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  font-weight: 600;
+}
