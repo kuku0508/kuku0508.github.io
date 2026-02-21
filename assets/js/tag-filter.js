@@ -14,6 +14,7 @@
   }
 
   function setupFilter(root) {
+    var HIDDEN_CLASS = "is-filter-hidden";
     var itemsContainer = root.querySelector("[data-filter-items]");
     if (!itemsContainer) return;
 
@@ -69,6 +70,8 @@
       items.forEach(function (item, index) {
         var isVisible = matches(itemTokens[index], selected, mode);
         item.hidden = !isVisible;
+        item.classList.toggle(HIDDEN_CLASS, !isVisible);
+        item.setAttribute("aria-hidden", String(!isVisible));
         if (isVisible) visibleCount += 1;
       });
 

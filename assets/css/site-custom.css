@@ -16,6 +16,19 @@ h1, h2, h3, h4 {
   font-family: "Noto Serif TC", "PMingLiU", serif;
 }
 
+body.layout--single.wide.portal-archive .initial-content,
+body.layout--single.wide.portal-archive .page,
+body.layout--single.wide.portal-archive .page__inner-wrap,
+body.layout--single.wide.portal-archive .page__content {
+  float: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.layout--single.wide.portal-archive .page__content {
+  width: 100% !important;
+}
+
 .portal-home .initial-content,
 .portal-archive .initial-content {
   background: linear-gradient(180deg, #f6f8f9 0%, var(--portal-bg) 100%);
@@ -352,6 +365,10 @@ h1, h2, h3, h4 {
   background: #ffffff;
   color: #516b79;
   font-size: 14px;
+}
+
+.is-filter-hidden {
+  display: none !important;
 }
 
 @media (max-width: 960px) {

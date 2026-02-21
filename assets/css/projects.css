@@ -4,13 +4,16 @@
 
 .projects-page .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 360px));
+  justify-content: center;
+  gap: 20px;
   margin-top: 14px;
 }
 
 .projects-page .project-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
   text-decoration: none;
   color: inherit;
   border: 1px solid rgba(120, 120, 120, 0.24);
@@ -21,7 +24,8 @@
 }
 
 .projects-page .project-card__media {
-  aspect-ratio: 1 / 1;
+  height: 46%;
+  min-height: 148px;
   border-bottom: 1px solid rgba(120, 120, 120, 0.18);
   overflow: hidden;
   background: #e8eef2;
@@ -58,23 +62,29 @@
 }
 
 .projects-page .project-card__body {
-  padding: 14px 16px 10px;
+  flex: 1;
+  min-height: 0;
+  padding: 12px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .projects-page .project-card__title {
-  margin: 0 0 8px 0;
-  font-size: 19px;
+  margin: 0;
+  font-size: 18px;
   line-height: 1.35;
   color: #24323d;
 }
 
 .projects-page .project-card__desc {
-  margin: 0 0 12px 0;
-  line-height: 1.6;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
   color: #3a4f5c;
   opacity: 0.95;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -82,26 +92,29 @@
 .projects-page .project-card__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
+  overflow: hidden;
+  max-height: 52px;
 }
 
 .projects-page .tag {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid rgba(120, 120, 120, 0.25);
-  font-size: 12px;
+  font-size: 11px;
   color: #3f5664;
   background: #f9fbfc;
 }
 
 .projects-page .project-card__footer {
-  padding: 12px 16px;
+  margin-top: auto;
+  padding: 8px 14px;
   border-top: 1px solid rgba(120, 120, 120, 0.18);
   display: flex;
   justify-content: flex-end;
   color: #395260;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .projects-page .project-card:hover {
@@ -112,7 +125,19 @@
 
 @media (max-width: 640px) {
   .projects-page .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    gap: 14px;
+  }
+
+  .projects-page .project-card {
+    aspect-ratio: auto;
+  }
+
+  .projects-page .project-card__media {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
   }
 }
 
