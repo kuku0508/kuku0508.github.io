@@ -15,6 +15,7 @@
 
   function setupFilter(root) {
     var HIDDEN_CLASS = "is-filter-hidden";
+    var REVEAL_CLASS = "is-filter-reveal";
     var itemsContainer = root.querySelector("[data-filter-items]");
     if (!itemsContainer) return;
 
@@ -31,6 +32,7 @@
     var resetButton = root.querySelector("[data-filter-reset]");
     var countNode = root.querySelector("[data-filter-count]");
     var emptyNode = root.querySelector("[data-filter-empty]");
+    var hasRendered = false;
 
     function getMode() {
       var checked = modeInputs.find(function (input) {
@@ -68,10 +70,22 @@
       var visibleCount = 0;
 
       items.forEach(function (item, index) {
+        var wasHidden = item.classList.contains(HIDDEN_CLASS) || item.hidden;
         var isVisible = matches(itemTokens[index], selected, mode);
         item.hidden = !isVisible;
         item.classList.toggle(HIDDEN_CLASS, !isVisible);
         item.setAttribute("aria-hidden", String(!isVisible));
+
+        if (isVisible) {
+          item.classList.remove(REVEAL_CLASS);
+          if (hasRendered && selected.length && wasHidden) {
+            void item.offsetWidth;
+            item.classList.add(REVEAL_CLASS);
+          }
+        } else {
+          item.classList.remove(REVEAL_CLASS);
+        }
+
         if (isVisible) visibleCount += 1;
       });
 
@@ -87,6 +101,8 @@
       if (emptyNode) {
         emptyNode.hidden = visibleCount !== 0;
       }
+
+      hasRendered = true;
     }
 
     checkboxes.forEach(function (checkbox) {

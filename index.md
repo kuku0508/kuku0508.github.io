@@ -6,6 +6,8 @@ permalink: /
 classes: wide portal-home
 ---
 
+<span id="profile-stats-source" data-post-count="{{ site.posts | size }}" data-project-count="{{ site.data.projects | size }}" hidden></span>
+
 <div class="portal-shell">
   <section class="portal-hero">
     <h1 class="portal-hero__title">Kuku's Portfolio & Notes</h1>
