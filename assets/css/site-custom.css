@@ -496,27 +496,87 @@ body.layout--single.wide.portal-archive .page__content {
   border-radius: 10px;
   background: #fbfdff;
   padding: 8px 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 10px;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  cursor: default;
+}
+
+.sidebar .profile-card__color-row:focus {
+  outline: 2px solid rgba(50, 154, 172, 0.35);
+  outline-offset: 2px;
+}
+
+.sidebar .profile-card__color-band {
+  --profile-color: #5dc2d4;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 8px;
+  justify-content: flex-end;
+  gap: 6px;
+  min-height: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background:
+    linear-gradient(132deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0) 45%),
+    linear-gradient(328deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 58%),
+    var(--profile-color);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 
 .sidebar .profile-card__swatch {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  background: var(--profile-color, #5dc2d4);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.92);
 }
 
-.sidebar .profile-card__item--color code {
-  background: rgba(93, 194, 212, 0.12);
-  color: #274957;
-  border-radius: 6px;
-  padding: 1px 6px;
-  font-size: 12px;
+.sidebar .profile-card__swatch--soft {
+  filter: saturate(0.8) brightness(1.05);
+  opacity: 0.88;
+}
+
+.sidebar .profile-card__swatch--deep {
+  filter: saturate(1.2) brightness(0.82);
+  opacity: 0.75;
+}
+
+.sidebar .profile-card__color-hint {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: #7a8f9b;
+}
+
+.sidebar .profile-card__color-hint i {
+  width: 14px;
+  text-align: center;
+}
+
+.sidebar .profile-card__color-row::after {
+  content: attr(data-color-code);
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  border-radius: 7px;
+  background: #233b47;
+  color: #eaf5fa;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  padding: 4px 8px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+}
+
+.sidebar .profile-card__color-row:hover::after,
+.sidebar .profile-card__color-row:focus::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 960px) {
