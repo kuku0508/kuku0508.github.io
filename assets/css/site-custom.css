@@ -658,6 +658,10 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 @media (max-width: 63.999em) {
+  .sidebar .profile-card__color-row {
+    --color-title-slot: 74px;
+  }
+
   .sidebar .profile-card .author__avatar {
     display: flex !important;
     justify-content: center !important;
