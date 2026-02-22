@@ -16,10 +16,16 @@ timezone: "Asia/Taipei"
 author:
   name: "kuku"
   avatar: "/assets/img/avatar.png"
+  url: "https://kuku0508.github.io"
   bio: |
     淡江大學 統計與資料科學學系  
     資料分析  
     資料預測
+  github: "https://github.com/kuku0508"
+  instagram: ""
+  linkedin: ""
+  email: ""
+  favorite_color: "#5DC2D4"
 
 defaults:
   - scope:
