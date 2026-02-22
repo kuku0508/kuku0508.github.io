@@ -517,11 +517,11 @@ body.layout--single.wide.portal-archive .page__content {
 .sidebar .profile-card__color-row {
   --gentle-gray: #3f444b;
   --color-motion-duration: 420ms;
-  --color-scale-active: 0.74;
-  --color-title-left: 6px;
-  --color-title-start-shift: 12px;
-  --color-code-start-shift: 12px;
-  --color-code-end-inset: 10px;
+  --color-title-slot: 64px;
+  --color-slot-gap: 6px;
+  --color-title-start-shift: 10px;
+  --color-code-start-shift: 10px;
+  --color-code-end-shift: -6px;
   margin: 0;
   padding: 0;
   display: block;
@@ -552,10 +552,12 @@ body.layout--single.wide.portal-archive .page__content {
   gap: 4px;
   white-space: nowrap;
   position: absolute;
-  left: var(--color-title-left);
+  left: 0;
   top: 50%;
   pointer-events: none;
-  max-width: 46%;
+  width: var(--color-title-slot);
+  max-width: var(--color-title-slot);
+  min-width: 0;
   opacity: 0;
   transform: translate(calc(-1 * var(--color-title-start-shift)), -50%);
   transition: opacity var(--color-motion-duration) cubic-bezier(0.22, 0.61, 0.36, 1),
@@ -565,12 +567,16 @@ body.layout--single.wide.portal-archive .page__content {
 
 .sidebar .profile-card__color-title span {
   display: inline-block;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sidebar .profile-card__color-title i {
   font-size: 11px;
+  flex: 0 0 auto;
 }
 
 .sidebar .profile-card__color-band {
@@ -578,19 +584,22 @@ body.layout--single.wide.portal-archive .page__content {
   position: relative;
   display: block;
   width: 100%;
+  margin-left: 0;
+  box-sizing: border-box;
   height: 24px;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 999px;
   background: var(--profile-color);
   overflow: hidden;
-  transform-origin: right center;
-  transition: transform var(--color-motion-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition:
+    width var(--color-motion-duration) cubic-bezier(0.22, 0.61, 0.36, 1),
+    margin-left var(--color-motion-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
   z-index: 1;
 }
 
 .sidebar .profile-card__color-code {
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 50%;
   transform: translate(var(--color-code-start-shift), -50%);
   color: var(--gentle-gray);
@@ -606,12 +615,14 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 .sidebar .profile-card__color-row.is-color-active .profile-card__color-band {
-  transform: scaleX(var(--color-scale-active));
+  width: calc(100% - (var(--color-title-slot) + var(--color-slot-gap)));
+  margin-left: calc(var(--color-title-slot) + var(--color-slot-gap));
 }
 
 .sidebar .profile-card__color-row:hover .profile-card__color-band,
 .sidebar .profile-card__color-row:focus-visible .profile-card__color-band {
-  transform: scaleX(var(--color-scale-active));
+  width: calc(100% - (var(--color-title-slot) + var(--color-slot-gap)));
+  margin-left: calc(var(--color-title-slot) + var(--color-slot-gap));
 }
 
 .sidebar .profile-card__color-row.is-color-active .profile-card__color-title {
@@ -627,23 +638,22 @@ body.layout--single.wide.portal-archive .page__content {
 
 .sidebar .profile-card__color-row.is-color-active .profile-card__color-code {
   opacity: 1;
-  transform: translate(calc(-1 * var(--color-code-end-inset)), -50%);
+  transform: translate(var(--color-code-end-shift), -50%);
 }
 
 .sidebar .profile-card__color-row:hover .profile-card__color-code,
 .sidebar .profile-card__color-row:focus-visible .profile-card__color-code {
   opacity: 1;
-  transform: translate(calc(-1 * var(--color-code-end-inset)), -50%);
+  transform: translate(var(--color-code-end-shift), -50%);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .sidebar .profile-card__color-row {
     --color-motion-duration: 900ms;
-    --color-scale-active: 0.72;
-    --color-title-left: 8px;
-    --color-title-start-shift: 14px;
-    --color-code-start-shift: 14px;
-    --color-code-end-inset: 10px;
+    --color-title-slot: 68px;
+    --color-title-start-shift: 10px;
+    --color-code-start-shift: 10px;
+    --color-code-end-shift: -6px;
   }
 }
 
