@@ -1,6 +1,6 @@
 (function () {
   var ACTIVE_CLASS = "is-color-active";
-  var AUTO_HIDE_MS = 1500;
+  var AUTO_HIDE_MS = 2200;
 
   function isCoarsePointer() {
     if (window.matchMedia) {
