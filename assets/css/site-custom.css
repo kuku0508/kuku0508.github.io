@@ -491,18 +491,17 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 .sidebar .profile-card__color-row {
+  --gentle-gray: #3f444b;
   margin: 0;
   border: 1px solid var(--portal-line);
   border-radius: 10px;
   background: #fbfdff;
-  padding: 8px 10px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px 10px;
-  align-items: center;
+  padding: 8px 10px 10px;
+  display: block;
   width: 100%;
   position: relative;
-  cursor: default;
+  cursor: pointer;
+  overflow: visible;
 }
 
 .sidebar .profile-card__color-row:focus {
@@ -510,73 +509,76 @@ body.layout--single.wide.portal-archive .page__content {
   outline-offset: 2px;
 }
 
-.sidebar .profile-card__color-band {
-  --profile-color: #5dc2d4;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-  min-height: 28px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 999px;
-  padding: 4px 8px;
-  background:
-    linear-gradient(132deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0) 45%),
-    linear-gradient(328deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 58%),
-    var(--profile-color);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+.sidebar .profile-card__color-title,
+.sidebar .profile-card__color-code {
+  position: absolute;
+  color: var(--gentle-gray);
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 260ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.sidebar .profile-card__swatch {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.62);
-  background: rgba(255, 255, 255, 0.92);
+.sidebar .profile-card__color-title {
+  left: 10px;
+  top: 50%;
+  transform: translate(-8px, -50%);
 }
 
-.sidebar .profile-card__swatch--soft {
-  filter: saturate(0.8) brightness(1.05);
-  opacity: 0.88;
-}
-
-.sidebar .profile-card__swatch--deep {
-  filter: saturate(1.2) brightness(0.82);
-  opacity: 0.75;
-}
-
-.sidebar .profile-card__color-hint {
-  grid-column: 1 / -1;
-  font-size: 11px;
-  color: #7a8f9b;
-}
-
-.sidebar .profile-card__color-hint i {
+.sidebar .profile-card__color-title i {
   width: 14px;
   text-align: center;
+  margin-right: 4px;
 }
 
-.sidebar .profile-card__color-row::after {
-  content: attr(data-color-code);
-  position: absolute;
+.sidebar .profile-card__color-code {
   right: 10px;
-  top: -30px;
-  border-radius: 7px;
-  background: #233b47;
-  color: #eaf5fa;
-  font-size: 11px;
-  letter-spacing: 0.4px;
-  padding: 4px 8px;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.16s ease, transform 0.16s ease;
-  pointer-events: none;
+  top: 0;
+  transform: translate(8px, -8px);
+  font-weight: 600;
 }
 
-.sidebar .profile-card__color-row:hover::after,
-.sidebar .profile-card__color-row:focus::after {
+.sidebar .profile-card__color-band {
+  --profile-color: #5dc2d4;
+  display: block;
+  width: 100%;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  background: var(--profile-color);
+  transform-origin: right center;
+  transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.sidebar .profile-card__color-row:hover .profile-card__color-band,
+.sidebar .profile-card__color-row:focus-within .profile-card__color-band,
+.sidebar .profile-card__color-row.is-color-active .profile-card__color-band {
+  transform: scaleX(0.88);
+}
+
+.sidebar .profile-card__color-row:hover .profile-card__color-title,
+.sidebar .profile-card__color-row:focus-within .profile-card__color-title,
+.sidebar .profile-card__color-row.is-color-active .profile-card__color-title {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate(0, -50%);
+}
+
+.sidebar .profile-card__color-row:hover .profile-card__color-code,
+.sidebar .profile-card__color-row:focus-within .profile-card__color-code,
+.sidebar .profile-card__color-row.is-color-active .profile-card__color-code {
+  opacity: 1;
+  transform: translate(0, -16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar .profile-card__color-title,
+  .sidebar .profile-card__color-code,
+  .sidebar .profile-card__color-band {
+    transition: none;
+  }
 }
 
 @media (max-width: 960px) {
