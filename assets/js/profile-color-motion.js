@@ -28,6 +28,7 @@
       clearTimer(row);
       row.classList.remove(ACTIVE_CLASS);
       row.setAttribute("aria-expanded", "false");
+      row.blur();
     }
 
     function activate(row) {
