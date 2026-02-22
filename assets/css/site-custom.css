@@ -403,8 +403,52 @@ body.layout--single.wide.portal-archive .page__content {
   box-shadow: 0 8px 20px rgba(20, 35, 46, 0.08);
 }
 
+.sidebar .profile-card .author__avatar {
+  margin-bottom: 10px;
+}
+
+.sidebar .profile-card__icon-links {
+  list-style: none;
+  margin: 0 0 12px 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sidebar .profile-card__icon-link {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #c6d6de;
+  background: #f8fbfd;
+  color: #2a4a5a;
+  text-decoration: none;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.sidebar .profile-card__icon-link:hover {
+  transform: translateY(-1px);
+  border-color: var(--portal-accent-dark);
+  color: var(--portal-accent-dark);
+  background: rgba(93, 194, 212, 0.14);
+}
+
+.sidebar .profile-card__icon-link--disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
 .sidebar .profile-card__content .author__name {
   margin-bottom: 8px;
+  text-align: center;
+}
+
+.sidebar .profile-card__content .author__bio {
+  text-align: center;
 }
 
 .sidebar .profile-card__stats {
@@ -436,23 +480,6 @@ body.layout--single.wide.portal-archive .page__content {
   color: #193646;
 }
 
-.sidebar .profile-card__links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.sidebar .profile-card__item {
-  border: 1px solid var(--portal-line);
-  border-radius: 10px;
-  background: #fbfdff;
-  padding: 8px 10px;
-  display: grid;
-  gap: 3px;
-}
-
 .sidebar .profile-card__label {
   font-size: 12px;
   color: #5b7582;
@@ -463,24 +490,16 @@ body.layout--single.wide.portal-archive .page__content {
   text-align: center;
 }
 
-.sidebar .profile-card__item a {
-  color: #264a5a;
-  text-decoration: none;
-  word-break: break-all;
-}
-
-.sidebar .profile-card__item a:hover {
-  color: var(--portal-accent-dark);
-}
-
-.sidebar .profile-card__muted {
-  color: #8ba0ac;
-  font-size: 13px;
-}
-
-.sidebar .profile-card__item--color .profile-card__color {
+.sidebar .profile-card__color-row {
+  margin: 0;
+  border: 1px solid var(--portal-line);
+  border-radius: 10px;
+  background: #fbfdff;
+  padding: 8px 10px;
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
   gap: 8px;
 }
 

@@ -3,6 +3,10 @@
 {% assign project_total = site.data.projects | size %}
 {% assign color_code = profile.favorite_color | default: "#5DC2D4" %}
 {% assign profile_url = profile.url | default: site.url | default: "/" %}
+{% assign github_url = profile.github | default: "" %}
+{% assign instagram_url = profile.instagram | default: "" %}
+{% assign linkedin_url = profile.linkedin | default: "" %}
+{% assign email_value = profile.email | default: "" %}
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card profile-card">
   {% if profile.avatar %}
@@ -11,6 +15,53 @@
       <img src="{{ profile.avatar | relative_url }}" alt="{{ profile.name | default: site.title }}" itemprop="image" class="u-photo">
     </a>
   </div>
+
+  <ul class="profile-card__icon-links">
+    <li>
+      {% if github_url != "" %}
+      <a class="profile-card__icon-link" href="{{ github_url }}" target="_blank" rel="nofollow noopener noreferrer me" itemprop="sameAs" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      {% else %}
+      <span class="profile-card__icon-link profile-card__icon-link--disabled" aria-hidden="true">
+        <i class="fab fa-github"></i>
+      </span>
+      {% endif %}
+    </li>
+    <li>
+      {% if instagram_url != "" %}
+      <a class="profile-card__icon-link" href="{{ instagram_url }}" target="_blank" rel="nofollow noopener noreferrer me" itemprop="sameAs" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      {% else %}
+      <span class="profile-card__icon-link profile-card__icon-link--disabled" aria-hidden="true">
+        <i class="fab fa-instagram"></i>
+      </span>
+      {% endif %}
+    </li>
+    <li>
+      {% if linkedin_url != "" %}
+      <a class="profile-card__icon-link" href="{{ linkedin_url }}" target="_blank" rel="nofollow noopener noreferrer me" itemprop="sameAs" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      {% else %}
+      <span class="profile-card__icon-link profile-card__icon-link--disabled" aria-hidden="true">
+        <i class="fab fa-linkedin"></i>
+      </span>
+      {% endif %}
+    </li>
+    <li>
+      {% if email_value != "" %}
+      <a class="profile-card__icon-link" href="mailto:{{ email_value }}" itemprop="email" aria-label="Email">
+        <i class="far fa-envelope"></i>
+      </a>
+      {% else %}
+      <span class="profile-card__icon-link profile-card__icon-link--disabled" aria-hidden="true">
+        <i class="far fa-envelope"></i>
+      </span>
+      {% endif %}
+    </li>
+  </ul>
   {% endif %}
 
   <div class="author__content profile-card__content">
@@ -35,45 +86,11 @@
     </p>
   </div>
 
-  <ul class="profile-card__links">
-    <li class="profile-card__item">
-      <span class="profile-card__label"><i class="fab fa-github"></i> GitHub</span>
-      {% if profile.github %}
-      <a href="{{ profile.github }}" target="_blank" rel="nofollow noopener noreferrer me" itemprop="sameAs">{{ profile.github | replace: "https://", "" }}</a>
-      {% else %}
-      <span class="profile-card__muted">待設定</span>
-      {% endif %}
-    </li>
-    <li class="profile-card__item">
-      <span class="profile-card__label"><i class="fab fa-instagram"></i> Instagram</span>
-      {% if profile.instagram %}
-      <a href="{{ profile.instagram }}" target="_blank" rel="nofollow noopener noreferrer me" itemprop="sameAs">{{ profile.instagram | replace: "https://", "" }}</a>
-      {% else %}
-      <span class="profile-card__muted">待設定</span>
-      {% endif %}
-    </li>
-    <li class="profile-card__item">
-      <span class="profile-card__label"><i class="fab fa-linkedin"></i> LinkedIn</span>
-      {% if profile.linkedin %}
-      <a href="{{ profile.linkedin }}" target="_blank" rel="nofollow noopener noreferrer me" itemprop="sameAs">{{ profile.linkedin | replace: "https://", "" }}</a>
-      {% else %}
-      <span class="profile-card__muted">待設定</span>
-      {% endif %}
-    </li>
-    <li class="profile-card__item">
-      <span class="profile-card__label"><i class="far fa-envelope"></i> Email</span>
-      {% if profile.email %}
-      <a href="mailto:{{ profile.email }}" itemprop="email">{{ profile.email }}</a>
-      {% else %}
-      <span class="profile-card__muted">待設定</span>
-      {% endif %}
-    </li>
-    <li class="profile-card__item profile-card__item--color">
-      <span class="profile-card__label"><i class="fas fa-palette"></i> 喜歡顏色</span>
-      <span class="profile-card__color">
-        <span class="profile-card__swatch" style="--profile-color: {{ color_code | escape }}"></span>
-        <code>{{ color_code }}</code>
-      </span>
-    </li>
-  </ul>
+  <p class="profile-card__color-row">
+    <span class="profile-card__label"><i class="fas fa-palette"></i> 喜歡顏色</span>
+    <span class="profile-card__color">
+      <span class="profile-card__swatch" style="--profile-color: {{ color_code | escape }}"></span>
+      <code>{{ color_code }}</code>
+    </span>
+  </p>
 </div>
