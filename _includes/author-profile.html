@@ -2,6 +2,7 @@
 {% assign post_total = site.posts | size %}
 {% assign project_total = site.data.projects | size %}
 {% assign color_code = profile.favorite_color | default: "#5DC2D4" %}
+{% assign color_code_display = color_code | remove: "#" %}
 {% assign profile_url = profile.url | default: site.url | default: "/" %}
 {% assign github_url = profile.github | default: "" %}
 {% assign instagram_url = profile.instagram | default: "" %}
@@ -92,9 +93,12 @@
     aria-label="最愛顏色色碼 {{ color_code | escape }}"
     tabindex="0"
   >
-    <span class="profile-card__color-title">最愛顏色</span>
+    <span class="profile-card__color-title">
+      <i class="fas fa-palette" aria-hidden="true"></i>
+      <span>最愛顏色</span>
+    </span>
     <span class="profile-card__color-band" style="--profile-color: {{ color_code | escape }}">
-      <span class="profile-card__color-code">{{ color_code }}</span>
+      <span class="profile-card__color-code">{{ color_code_display }}</span>
     </span>
   </p>
 </div>
