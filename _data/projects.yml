@@ -1,6 +1,7 @@
 - id: youbike_sna
   title: "YouBike 站點互動網路與生活圈辨識"
   url: /projects/youbike_sna/
+  date: "2026-02-20"
   summary: "以 2023-2025 站點流量與旅次建構網路，透過 SNA 與社群偵測辨識站點角色，並用地圖視覺化呈現生活圈與交通節點特性。"
   tags:
     - SNA
@@ -11,6 +12,7 @@
 - id: survival_analysis
   title: "Survival Analysis（設限資料）"
   url: /projects/survival_analysis/
+  date: "2026-02-18"
   summary: "針對含設限的時間到事件資料，整理分析流程：資料處理、存活曲線、模型建構與解讀，重點放在結果可解釋性。"
   tags:
     - 存活分析
@@ -21,6 +23,7 @@
 - id: kepler
   title: "Kepler 望遠鏡資料集分析"
   url: /projects/kepler/
+  date: "2026-02-15"
   summary: "從光度時間序列資料出發，進行清理、特徵萃取與探索性分析，建立可重現的分析筆記與特徵工程流程。"
   tags:
     - 時間序列

@@ -36,7 +36,9 @@
     var resetButton = root.querySelector("[data-filter-reset]");
     var countNode = root.querySelector("[data-filter-count]");
     var emptyNode = root.querySelector("[data-filter-empty]");
+    var groups = Array.from(root.querySelectorAll("[data-filter-group]"));
     var motionJobs = new WeakMap();
+    var groupHideTimers = new WeakMap();
     var hasRendered = false;
 
     function clearMotionJob(item) {
@@ -54,6 +56,13 @@
       motionJobs.delete(item);
       item.style.opacity = "";
       item.style.transform = "";
+    }
+
+    function clearGroupHideTimer(group) {
+      var timerId = groupHideTimers.get(group);
+      if (!timerId) return;
+      window.clearTimeout(timerId);
+      groupHideTimers.delete(group);
     }
 
     function runMotion(item, keyframes, onDone) {
@@ -170,6 +179,44 @@
       return item.classList.contains(LEAVING_CLASS);
     }
 
+    function updateGroups(visibilityMap, animate) {
+      if (!groups.length) return;
+
+      groups.forEach(function (group) {
+        clearGroupHideTimer(group);
+
+        var groupItems = Array.from(group.querySelectorAll("[data-tags]"));
+        var visibleInGroup = 0;
+        groupItems.forEach(function (item) {
+          if (visibilityMap.get(item)) visibleInGroup += 1;
+        });
+
+        var groupCountNode = group.querySelector("[data-filter-group-count]");
+        if (groupCountNode) {
+          groupCountNode.textContent = String(visibleInGroup);
+        }
+
+        if (visibleInGroup > 0) {
+          group.hidden = false;
+          group.setAttribute("aria-hidden", "false");
+          return;
+        }
+
+        if (!animate) {
+          group.hidden = true;
+          group.setAttribute("aria-hidden", "true");
+          return;
+        }
+
+        var timerId = window.setTimeout(function () {
+          group.hidden = true;
+          group.setAttribute("aria-hidden", "true");
+          groupHideTimers.delete(group);
+        }, TRANSITION_MS + 20);
+        groupHideTimers.set(group, timerId);
+      });
+    }
+
     function getMode() {
       var checked = modeInputs.find(function (input) {
         return input.checked;
@@ -205,10 +252,12 @@
       var mode = getMode();
       var visibleCount = 0;
       var shouldAnimate = hasRendered;
+      var visibilityMap = new Map();
 
       items.forEach(function (item, index) {
         var wasVisible = isCurrentlyVisible(item);
         var isVisible = matches(itemTokens[index], selected, mode);
+        visibilityMap.set(item, isVisible);
 
         if (isVisible) {
           if (wasVisible && !isLeaving(item)) {
@@ -226,6 +275,8 @@
 
         if (isVisible) visibleCount += 1;
       });
+
+      updateGroups(visibilityMap, shouldAnimate);
 
       if (countNode) {
         if (!selected.length) {
