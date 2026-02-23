@@ -10,6 +10,7 @@
 {% assign email_value = profile.email | default: "" %}
 {% assign sidebar_nav = site.data.navigation.sidebar_main %}
 {% assign current_page_url = page.url | default: "/" %}
+{% assign is_archives_page = current_page_url == "/archives/" %}
 
 <div class="profile-sidebar-stack">
   {% if sidebar_nav and sidebar_nav.size > 0 %}
@@ -44,6 +45,74 @@
       {% endfor %}
     </ul>
   </nav>
+  {% endif %}
+
+  {% if is_archives_page %}
+  <section class="profile-timeline-filter-card" data-archive-sidebar-filter>
+    <h3 class="profile-timeline-filter-card__title">時間軸篩選</h3>
+
+    <section class="timeline-sidebar-filter__section" data-archive-filter="articles">
+      <div class="timeline-sidebar-filter__header">
+        <strong>文章</strong>
+        <button type="button" class="filter-reset" data-archive-filter-reset>清除</button>
+      </div>
+      <div class="filter-mode" role="radiogroup" aria-label="文章篩選模式">
+        <input type="radio" id="sidebar-archives-articles-mode-or" name="sidebar-filter-mode-archives-articles" value="or" checked>
+        <label for="sidebar-archives-articles-mode-or">OR</label>
+        <input type="radio" id="sidebar-archives-articles-mode-and" name="sidebar-filter-mode-archives-articles" value="and">
+        <label for="sidebar-archives-articles-mode-and">AND</label>
+      </div>
+      <p class="filter-summary" data-archive-filter-count></p>
+
+      {% if site.tags and site.tags.size > 0 %}
+      {% assign sorted_tags = site.tags | sort %}
+      <div class="filter-chip-list">
+        {% for tag in sorted_tags %}
+        {% assign tag_name = tag[0] %}
+        {% assign tag_token = tag_name | downcase | replace: " ", "-" | replace: "/", "-" | replace: "#", "" | replace: ",", "" %}
+        <label class="filter-chip">
+          <input type="checkbox" value="{{ tag_token }}">
+          <span>#{{ tag_name }}</span>
+        </label>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </section>
+
+    <section class="timeline-sidebar-filter__section" data-archive-filter="projects">
+      <div class="timeline-sidebar-filter__header">
+        <strong>專案</strong>
+        <button type="button" class="filter-reset" data-archive-filter-reset>清除</button>
+      </div>
+      <div class="filter-mode" role="radiogroup" aria-label="專案篩選模式">
+        <input type="radio" id="sidebar-archives-projects-mode-or" name="sidebar-filter-mode-archives-projects" value="or" checked>
+        <label for="sidebar-archives-projects-mode-or">OR</label>
+        <input type="radio" id="sidebar-archives-projects-mode-and" name="sidebar-filter-mode-archives-projects" value="and">
+        <label for="sidebar-archives-projects-mode-and">AND</label>
+      </div>
+      <p class="filter-summary" data-archive-filter-count></p>
+
+      {% assign project_tag_string = "" %}
+      {% for project in site.data.projects %}
+        {% for tag in project.tags %}
+          {% assign project_tag_string = project_tag_string | append: tag | append: "||" %}
+        {% endfor %}
+      {% endfor %}
+      {% assign project_tags = project_tag_string | split: "||" | uniq | sort %}
+
+      <div class="filter-chip-list">
+        {% for tag_name in project_tags %}
+          {% if tag_name != "" %}
+            {% assign tag_token = tag_name | downcase | replace: " ", "-" | replace: "/", "-" | replace: "#", "" | replace: ",", "" %}
+            <label class="filter-chip">
+              <input type="checkbox" value="{{ tag_token }}">
+              <span>#{{ tag_name }}</span>
+            </label>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </section>
   {% endif %}
 
   <div itemscope itemtype="https://schema.org/Person" class="h-card profile-card">
