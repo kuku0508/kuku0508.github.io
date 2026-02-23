@@ -45,7 +45,12 @@
     var TRANSITION_MS = 480;
     var motionJobs = new WeakMap();
     var groupTimers = new WeakMap();
+    var visibilityState = new WeakMap();
     var hasRendered = false;
+
+    allItems.forEach(function (item) {
+      visibilityState.set(item, !item.hidden);
+    });
 
     function clearMotion(item) {
       var job = motionJobs.get(item);
@@ -256,12 +261,26 @@
         }
 
         visibilityMap.set(item, shouldShow);
+        var wasVisible = visibilityState.has(item) ? visibilityState.get(item) : !item.hidden;
+        var isAnimating = motionJobs.has(item);
 
-        if (shouldShow) {
-          showItem(item, shouldAnimate);
-        } else {
-          hideItem(item, shouldAnimate);
+        if (shouldShow !== wasVisible) {
+          if (shouldShow) {
+            showItem(item, shouldAnimate);
+          } else {
+            hideItem(item, shouldAnimate);
+          }
+        } else if (!isAnimating) {
+          if (shouldShow) {
+            item.hidden = false;
+            item.setAttribute("aria-hidden", "false");
+          } else {
+            item.hidden = true;
+            item.setAttribute("aria-hidden", "true");
+          }
         }
+
+        visibilityState.set(item, shouldShow);
 
         if (shouldShow) {
           visibleTotal += 1;
