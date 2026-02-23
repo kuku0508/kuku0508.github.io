@@ -77,6 +77,15 @@ h1, h2, h3, h4 {
     padding-left: 0;
     clear: none !important;
   }
+
+  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .sidebar {
+    margin-right: clamp(20px, 2.8vw, 36px);
+  }
+
+  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .page {
+    min-width: 0;
+    padding-left: clamp(12px, 1.4vw, 22px);
+  }
 }
 
 @media (min-width: 80em) {
