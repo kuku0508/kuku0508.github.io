@@ -2,6 +2,7 @@
 layout: single
 title: "履歷"
 permalink: /resume/
+classes: profile-gap-match
 ---
 
 ## 簡介

@@ -2,6 +2,7 @@
 layout: single
 title: "關於我"
 permalink: /about/
+classes: profile-gap-match
 ---
 
 我是 kuku，統計背景，主要關注資料分析、預測建模與資料視覺化。  
