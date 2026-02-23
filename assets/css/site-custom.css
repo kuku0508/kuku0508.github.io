@@ -18,6 +18,17 @@ h1, h2, h3, h4 {
 
 @media (min-width: 64em) {
   body.layout--single .sidebar {
+    margin-left: 0;
+    margin-right: 16px;
+  }
+
+  body.layout--single .page {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 80em) {
+  body.layout--single .sidebar {
     margin-left: -8px;
     margin-right: 24px;
   }
@@ -30,7 +41,6 @@ h1, h2, h3, h4 {
   body.layout--single.wide.portal-home .page {
     float: none !important;
     width: auto !important;
-    overflow: hidden;
   }
 
   body.layout--single.wide.portal-archive .page__inner-wrap,
@@ -420,6 +430,7 @@ h1, h2, h3, h4 {
 .sidebar .profile-sidebar-stack {
   display: grid;
   gap: 12px;
+  min-width: 0;
 }
 
 .sidebar .profile-card {
@@ -429,6 +440,7 @@ h1, h2, h3, h4 {
   padding: 14px;
   box-shadow: 0 8px 20px rgba(20, 35, 46, 0.08);
   margin: 0;
+  min-width: 0;
 }
 
 .sidebar .profile-nav-card {
@@ -438,6 +450,7 @@ h1, h2, h3, h4 {
   background: #f8fbfd;
   padding: 6px;
   box-shadow: 0 8px 20px rgba(20, 35, 46, 0.06);
+  min-width: 0;
 }
 
 .sidebar .profile-card__nav-list {
