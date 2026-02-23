@@ -269,7 +269,8 @@ body.layout--single.wide.project .initial-content {
 /* 控制閱讀寬度 */
 body.layout--single.wide.project .page__content {
   max-width: 980px !important;
-  margin: 0 auto !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
 
