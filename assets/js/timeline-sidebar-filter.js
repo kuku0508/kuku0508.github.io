@@ -42,7 +42,7 @@
     var totalProjects = allItems.filter(function (item) {
       return item.dataset.kind === "project";
     }).length;
-    var TRANSITION_MS = 280;
+    var TRANSITION_MS = 480;
     var motionJobs = new WeakMap();
     var groupTimers = new WeakMap();
     var hasRendered = false;
@@ -87,7 +87,7 @@
 
       var animation = item.animate(keyframes, {
         duration: TRANSITION_MS,
-        easing: "ease",
+        easing: "cubic-bezier(0.22, 0.61, 0.36, 1)",
         fill: "forwards",
       });
 
@@ -118,8 +118,8 @@
       runMotion(
         item,
         [
-          { opacity: 0, transform: "translateY(8px)" },
-          { opacity: 1, transform: "translateY(0)" },
+          { opacity: 0, transform: "translateY(14px) scale(0.985)" },
+          { opacity: 1, transform: "translateY(0) scale(1)" },
         ],
         function () {
           item.hidden = false;
@@ -141,8 +141,8 @@
       runMotion(
         item,
         [
-          { opacity: 1, transform: "translateY(0)" },
-          { opacity: 0, transform: "translateY(-8px)" },
+          { opacity: 1, transform: "translateY(0) scale(1)" },
+          { opacity: 0, transform: "translateY(-14px) scale(0.985)" },
         ],
         function () {
           finalizeHide(item);
