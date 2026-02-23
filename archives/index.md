@@ -74,10 +74,18 @@ classes: wide portal-archive timeline-page
                   <span>{{ year }}</span>
                   <span class="timeline-year__counts">
                     <span class="timeline-year__count timeline-year__count--article">
-                      文 <span data-timeline-year-article-count>{{ year_article_total }}</span>
+                      <span class="timeline-year__count-icon" aria-hidden="true">
+                        <i class="fas fa-feather-alt"></i>
+                      </span>
+                      <span class="timeline-year__count-divider" aria-hidden="true"></span>
+                      <span class="timeline-year__count-number" data-timeline-year-article-count>{{ year_article_total }}</span>
                     </span>
                     <span class="timeline-year__count timeline-year__count--project">
-                      專 <span data-timeline-year-project-count>{{ year_project_total }}</span>
+                      <span class="timeline-year__count-icon" aria-hidden="true">
+                        <i class="fas fa-folder-open"></i>
+                      </span>
+                      <span class="timeline-year__count-divider" aria-hidden="true"></span>
+                      <span class="timeline-year__count-number" data-timeline-year-project-count>{{ year_project_total }}</span>
                     </span>
                   </span>
                 </h3>
@@ -98,7 +106,7 @@ classes: wide portal-archive timeline-page
                       >
                         <span class="timeline-item__marker" aria-hidden="true">
                           {% if item_kind == "article" %}
-                            <i class="far fa-file-alt"></i>
+                            <i class="fas fa-feather-alt"></i>
                           {% else %}
                             <i class="fas fa-folder-open"></i>
                           {% endif %}

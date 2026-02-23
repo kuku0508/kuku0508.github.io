@@ -425,25 +425,49 @@ h1, h2, h3, h4 {
 .timeline-page .timeline-year__count {
   min-height: 24px;
   padding: 3px 8px;
-  border-radius: 999px;
-  background: #d9e2e7;
+  border-radius: 8px;
+  border: 1px solid #c8d5dc;
+  background: #f6f9fb;
   color: #445661;
   font-size: 12px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 7px;
   white-space: nowrap;
 }
 
 .timeline-page .timeline-year__count--article {
-  background: #d9e8ef;
+  background: #eef6fa;
   color: #365766;
 }
 
 .timeline-page .timeline-year__count--project {
-  background: #dae8e1;
+  background: #eef7f2;
   color: #325b4a;
+}
+
+.timeline-page .timeline-year__count-icon {
+  width: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.timeline-page .timeline-year__count-divider {
+  width: 1px;
+  align-self: stretch;
+  background: #bfd0d9;
+  opacity: 0.95;
+}
+
+.timeline-page .timeline-year__count-number {
+  min-width: 1.5em;
+  text-align: right;
+  line-height: 1;
 }
 
 .timeline-page .timeline-list {
