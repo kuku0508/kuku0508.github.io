@@ -9,7 +9,7 @@ sidebar_main:
     icon: "fas fa-feather-alt"
   - title: "時間軸"
     url: /archives/
-    icon: "fas fa-archive"
+    icon: "fas fa-stopwatch"
   - title: "專案"
     url: /projects/
     icon: "fas fa-folder-open"

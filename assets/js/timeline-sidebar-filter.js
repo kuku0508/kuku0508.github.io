@@ -42,6 +42,120 @@
     var totalProjects = allItems.filter(function (item) {
       return item.dataset.kind === "project";
     }).length;
+    var TRANSITION_MS = 280;
+    var motionJobs = new WeakMap();
+    var groupTimers = new WeakMap();
+    var hasRendered = false;
+
+    function clearMotion(item) {
+      var job = motionJobs.get(item);
+      if (!job) return;
+
+      window.clearTimeout(job.fallbackTimer);
+      if (job.animation) {
+        job.animation.onfinish = null;
+        job.animation.oncancel = null;
+        try {
+          job.animation.cancel();
+        } catch (error) {}
+      }
+      motionJobs.delete(item);
+      item.style.opacity = "";
+      item.style.transform = "";
+    }
+
+    function runMotion(item, keyframes, onDone) {
+      clearMotion(item);
+
+      if (!item.animate) {
+        onDone();
+        return;
+      }
+
+      var job = {
+        animation: null,
+        fallbackTimer: 0,
+      };
+
+      function complete() {
+        if (motionJobs.get(item) !== job) return;
+        motionJobs.delete(item);
+        item.style.opacity = "";
+        item.style.transform = "";
+        onDone();
+      }
+
+      var animation = item.animate(keyframes, {
+        duration: TRANSITION_MS,
+        easing: "ease",
+        fill: "forwards",
+      });
+
+      job.animation = animation;
+      job.fallbackTimer = window.setTimeout(complete, TRANSITION_MS + 100);
+      motionJobs.set(item, job);
+      animation.onfinish = complete;
+      animation.oncancel = complete;
+    }
+
+    function finalizeHide(item) {
+      clearMotion(item);
+      item.hidden = true;
+      item.setAttribute("aria-hidden", "true");
+    }
+
+    function showItem(item, animate) {
+      clearMotion(item);
+      item.hidden = false;
+      item.setAttribute("aria-hidden", "false");
+
+      if (!animate) {
+        item.style.opacity = "";
+        item.style.transform = "";
+        return;
+      }
+
+      runMotion(
+        item,
+        [
+          { opacity: 0, transform: "translateY(8px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        function () {
+          item.hidden = false;
+          item.setAttribute("aria-hidden", "false");
+        }
+      );
+    }
+
+    function hideItem(item, animate) {
+      clearMotion(item);
+
+      if (!animate) {
+        finalizeHide(item);
+        return;
+      }
+
+      item.hidden = false;
+      item.setAttribute("aria-hidden", "true");
+      runMotion(
+        item,
+        [
+          { opacity: 1, transform: "translateY(0)" },
+          { opacity: 0, transform: "translateY(-8px)" },
+        ],
+        function () {
+          finalizeHide(item);
+        }
+      );
+    }
+
+    function clearGroupTimer(group) {
+      var timerId = groupTimers.get(group);
+      if (!timerId) return;
+      window.clearTimeout(timerId);
+      groupTimers.delete(group);
+    }
 
     function readFilterState(box) {
       var checkedMode = box.querySelector("input[type='radio']:checked");
@@ -79,12 +193,48 @@
       }
     }
 
+    function updateGroups(visibilityMap, animate) {
+      yearGroups.forEach(function (group) {
+        clearGroupTimer(group);
+
+        var groupItems = Array.from(group.querySelectorAll(".timeline-item[data-kind]"));
+        var visibleInYear = 0;
+        groupItems.forEach(function (item) {
+          if (visibilityMap.get(item)) visibleInYear += 1;
+        });
+
+        var countNode = group.querySelector("[data-timeline-year-count]");
+        if (countNode) countNode.textContent = String(visibleInYear);
+
+        if (visibleInYear > 0) {
+          group.hidden = false;
+          group.setAttribute("aria-hidden", "false");
+          return;
+        }
+
+        if (!animate) {
+          group.hidden = true;
+          group.setAttribute("aria-hidden", "true");
+          return;
+        }
+
+        var timerId = window.setTimeout(function () {
+          group.hidden = true;
+          group.setAttribute("aria-hidden", "true");
+          groupTimers.delete(group);
+        }, TRANSITION_MS + 20);
+        groupTimers.set(group, timerId);
+      });
+    }
+
     function render() {
       var articleState = readFilterState(articleBox);
       var projectState = readFilterState(projectBox);
       var visibleTotal = 0;
       var visibleArticles = 0;
       var visibleProjects = 0;
+      var shouldAnimate = hasRendered;
+      var visibilityMap = new Map();
 
       allItems.forEach(function (item) {
         var kind = item.dataset.kind;
@@ -96,8 +246,13 @@
           shouldShow = matches(parseTokens(item.dataset.projectTags), projectState.selected, projectState.mode);
         }
 
-        item.hidden = !shouldShow;
-        item.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+        visibilityMap.set(item, shouldShow);
+
+        if (shouldShow) {
+          showItem(item, shouldAnimate);
+        } else {
+          hideItem(item, shouldAnimate);
+        }
 
         if (shouldShow) {
           visibleTotal += 1;
@@ -106,15 +261,7 @@
         }
       });
 
-      yearGroups.forEach(function (group) {
-        var visibleInYear = Array.from(group.querySelectorAll(".timeline-item[data-kind]")).filter(function (item) {
-          return !item.hidden;
-        }).length;
-        group.hidden = visibleInYear === 0;
-        group.setAttribute("aria-hidden", visibleInYear === 0 ? "true" : "false");
-        var countNode = group.querySelector("[data-timeline-year-count]");
-        if (countNode) countNode.textContent = String(visibleInYear);
-      });
+      updateGroups(visibilityMap, shouldAnimate);
 
       updateSummary(articleBox, visibleArticles, totalArticles, "文章");
       updateSummary(projectBox, visibleProjects, totalProjects, "專案");
@@ -122,6 +269,8 @@
       if (emptyNode) {
         emptyNode.hidden = visibleTotal !== 0;
       }
+
+      hasRendered = true;
     }
 
     function bindBox(box) {
