@@ -16,9 +16,15 @@
   }
 
   function setupTimelineSidebarFilter() {
-    var timelineRoot = document.querySelector(".timeline-page [data-timeline-items]");
     var sidebarRoot = document.querySelector("[data-archive-sidebar-filter]");
-    if (!timelineRoot || !sidebarRoot) return;
+    if (!sidebarRoot) return;
+
+    var timelineRoot = document.querySelector("[data-timeline-items]");
+    if (!timelineRoot) {
+      sidebarRoot.hidden = true;
+      return;
+    }
+    sidebarRoot.hidden = false;
 
     var allItems = Array.from(timelineRoot.querySelectorAll(".timeline-item[data-kind]"));
     if (!allItems.length) return;

@@ -505,6 +505,11 @@ h1, h2, h3, h4 {
   background: #ffffff;
 }
 
+.timeline-page .timeline-item[hidden],
+.timeline-page .timeline-year[hidden] {
+  display: none !important;
+}
+
 .tag-filter {
   border: 1px solid var(--portal-line);
   border-radius: 14px;
@@ -655,6 +660,10 @@ h1, h2, h3, h4 {
   background: #ffffff;
   padding: 12px;
   box-shadow: 0 8px 20px rgba(20, 35, 46, 0.08);
+}
+
+.sidebar .profile-timeline-filter-card[hidden] {
+  display: none !important;
 }
 
 .sidebar .profile-timeline-filter-card__title {
