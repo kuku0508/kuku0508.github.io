@@ -83,6 +83,10 @@ body.layout--single.wide.portal-archive .page__content {
   gap: 16px;
 }
 
+.portal-layout > .portal-column:only-child {
+  grid-column: 1 / -1;
+}
+
 .portal-column {
   display: grid;
   gap: 16px;
@@ -403,6 +407,68 @@ body.layout--single.wide.portal-archive .page__content {
   box-shadow: 0 8px 20px rgba(20, 35, 46, 0.08);
 }
 
+.sidebar .profile-card__nav {
+  margin: 0 0 12px 0;
+  border: 1px solid var(--portal-line);
+  border-radius: 12px;
+  background: #f8fbfd;
+  padding: 6px;
+}
+
+.sidebar .profile-card__nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.sidebar .profile-card__nav-item {
+  margin: 0;
+}
+
+.sidebar .profile-card__nav-link {
+  min-height: 40px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #2b4654;
+  border: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.sidebar .profile-card__nav-link i {
+  width: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #4a6573;
+}
+
+.sidebar .profile-card__nav-link span {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.sidebar .profile-card__nav-link:hover {
+  background: #eef5f8;
+  border-color: #d1dde4;
+  color: #1d3c4b;
+}
+
+.sidebar .profile-card__nav-link.is-active {
+  background: rgba(93, 194, 212, 0.2);
+  border-color: rgba(50, 154, 172, 0.35);
+  color: #173845;
+}
+
+.sidebar .profile-card__nav-link.is-active i {
+  color: #206277;
+}
+
 .sidebar .profile-card .author__avatar {
   margin-bottom: 10px;
   display: flex;
@@ -672,6 +738,21 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 @media (max-width: 63.999em) {
+  .sidebar .profile-card__nav {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  .sidebar .profile-card__nav-link {
+    min-height: 40px;
+    padding: 8px 9px;
+    gap: 7px;
+  }
+
+  .sidebar .profile-card__nav-link span {
+    font-size: 13px;
+  }
+
   .sidebar .profile-card__color-row {
     --color-title-slot: 74px;
   }

@@ -76,16 +76,5 @@ classes: wide portal-home
       </section>
     </div>
 
-    <aside class="portal-column">
-      <section class="portal-card">
-        <h2 class="portal-card__title">站內導覽</h2>
-        <ul class="quick-links">
-          <li><a href="{{ '/articles/' | relative_url }}">文章總覽</a></li>
-          <li><a href="{{ '/archives/' | relative_url }}">時間軸</a></li>
-          <li><a href="{{ '/projects/' | relative_url }}">專案作品集</a></li>
-          <li><a href="{{ '/about/' | relative_url }}">關於我</a></li>
-        </ul>
-      </section>
-    </aside>
   </div>
 </div>

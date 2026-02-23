@@ -1,13 +1,21 @@
-main:
+main: []
+
+sidebar_main:
   - title: "首頁"
     url: /
+    icon: "fas fa-home"
   - title: "文章"
     url: /articles/
+    icon: "fas fa-feather-alt"
   - title: "時間軸"
     url: /archives/
+    icon: "fas fa-archive"
   - title: "專案"
     url: /projects/
+    icon: "fas fa-folder-open"
   - title: "關於我"
     url: /about/
+    icon: "fas fa-user"
   - title: "履歷"
     url: /resume/
+    icon: "fas fa-file-alt"

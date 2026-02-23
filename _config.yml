@@ -30,6 +30,11 @@ author:
 defaults:
   - scope:
       path: ""
+      type: pages
+    values:
+      author_profile: true
+  - scope:
+      path: ""
       type: posts
     values:
       layout: single

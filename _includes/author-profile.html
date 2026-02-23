@@ -10,6 +10,42 @@
 {% assign email_value = profile.email | default: "" %}
 
 <div itemscope itemtype="https://schema.org/Person" class="h-card profile-card">
+  {% assign sidebar_nav = site.data.navigation.sidebar_main %}
+  {% assign current_page_url = page.url | default: "/" %}
+  {% if sidebar_nav and sidebar_nav.size > 0 %}
+  <nav class="profile-card__nav" aria-label="主導覽">
+    <ul class="profile-card__nav-list">
+      {% for item in sidebar_nav %}
+      {% assign item_url = item.url | default: "/" %}
+      {% assign is_active = false %}
+      {% if item_url == "/" %}
+        {% if current_page_url == "/" %}
+          {% assign is_active = true %}
+        {% endif %}
+      {% elsif item_url == "/articles/" and page.collection == "posts" %}
+        {% assign is_active = true %}
+      {% else %}
+        {% assign item_url_len = item_url | size %}
+        {% assign page_prefix = current_page_url | slice: 0, item_url_len %}
+        {% if page_prefix == item_url %}
+          {% assign is_active = true %}
+        {% endif %}
+      {% endif %}
+      <li class="profile-card__nav-item">
+        <a
+          class="profile-card__nav-link{% if is_active %} is-active{% endif %}"
+          href="{{ item_url | relative_url }}"
+          {% if is_active %}aria-current="page"{% endif %}
+        >
+          <i class="{{ item.icon | default: 'fas fa-circle' }}" aria-hidden="true"></i>
+          <span>{{ item.title }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% endif %}
+
   {% if profile.avatar %}
   <div class="author__avatar">
     <a href="{{ profile_url }}">
