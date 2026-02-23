@@ -82,6 +82,10 @@ h1, h2, h3, h4 {
     margin-right: 16px;
   }
 
+  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match):not(.project) #main > .sidebar {
+    margin-right: clamp(20px, 2.8vw, 36px);
+  }
+
   body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .page {
     min-width: 0;
     padding-left: 0;
