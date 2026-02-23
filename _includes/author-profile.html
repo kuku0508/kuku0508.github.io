@@ -8,12 +8,12 @@
 {% assign instagram_url = profile.instagram | default: "" %}
 {% assign linkedin_url = profile.linkedin | default: "" %}
 {% assign email_value = profile.email | default: "" %}
+{% assign sidebar_nav = site.data.navigation.sidebar_main %}
+{% assign current_page_url = page.url | default: "/" %}
 
-<div itemscope itemtype="https://schema.org/Person" class="h-card profile-card">
-  {% assign sidebar_nav = site.data.navigation.sidebar_main %}
-  {% assign current_page_url = page.url | default: "/" %}
+<div class="profile-sidebar-stack">
   {% if sidebar_nav and sidebar_nav.size > 0 %}
-  <nav class="profile-card__nav" aria-label="主導覽">
+  <nav class="profile-nav-card profile-card__nav" aria-label="主導覽">
     <ul class="profile-card__nav-list">
       {% for item in sidebar_nav %}
       {% assign item_url = item.url | default: "/" %}
@@ -45,6 +45,8 @@
     </ul>
   </nav>
   {% endif %}
+
+  <div itemscope itemtype="https://schema.org/Person" class="h-card profile-card">
 
   {% if profile.avatar %}
   <div class="author__avatar">
@@ -137,4 +139,5 @@
       <span class="profile-card__color-code">{{ color_code_display }}</span>
     </span>
   </p>
+  </div>
 </div>

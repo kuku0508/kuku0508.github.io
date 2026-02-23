@@ -16,17 +16,35 @@ h1, h2, h3, h4 {
   font-family: "Noto Serif TC", "PMingLiU", serif;
 }
 
-body.layout--single.wide.portal-archive .initial-content,
-body.layout--single.wide.portal-archive .page,
-body.layout--single.wide.portal-archive .page__inner-wrap,
-body.layout--single.wide.portal-archive .page__content {
-  float: none !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
+@media (min-width: 64em) {
+  body.layout--single .sidebar {
+    margin-left: -8px;
+    margin-right: 24px;
+  }
 
-body.layout--single.wide.portal-archive .page__content {
-  width: 100% !important;
+  body.layout--single .page {
+    padding-left: 8px;
+  }
+
+  body.layout--single.wide.portal-archive .page,
+  body.layout--single.wide.portal-home .page {
+    float: none !important;
+    width: auto !important;
+    overflow: hidden;
+  }
+
+  body.layout--single.wide.portal-archive .page__inner-wrap,
+  body.layout--single.wide.portal-home .page__inner-wrap {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  body.layout--single.wide.portal-archive .page__content,
+  body.layout--single.wide.portal-home .page__content {
+    width: 100% !important;
+    float: none !important;
+    margin: 0 !important;
+  }
 }
 
 .portal-home .initial-content,
@@ -399,20 +417,27 @@ body.layout--single.wide.portal-archive .page__content {
   pointer-events: none;
 }
 
+.sidebar .profile-sidebar-stack {
+  display: grid;
+  gap: 12px;
+}
+
 .sidebar .profile-card {
   border: 1px solid var(--portal-line);
   border-radius: 16px;
   background: #ffffff;
   padding: 14px;
   box-shadow: 0 8px 20px rgba(20, 35, 46, 0.08);
+  margin: 0;
 }
 
-.sidebar .profile-card__nav {
-  margin: 0 0 12px 0;
+.sidebar .profile-nav-card {
+  margin: 0;
   border: 1px solid var(--portal-line);
   border-radius: 12px;
   background: #f8fbfd;
   padding: 6px;
+  box-shadow: 0 8px 20px rgba(20, 35, 46, 0.06);
 }
 
 .sidebar .profile-card__nav-list {
@@ -738,8 +763,8 @@ body.layout--single.wide.portal-archive .page__content {
 }
 
 @media (max-width: 63.999em) {
-  .sidebar .profile-card__nav {
-    margin-bottom: 10px;
+  .sidebar .profile-nav-card {
+    margin-bottom: 0;
     padding: 5px;
   }
 
