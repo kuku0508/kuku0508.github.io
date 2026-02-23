@@ -54,14 +54,14 @@ h1, h2, h3, h4 {
     margin-right: 0 !important;
   }
 
-  body.layout--single.profile-gap-match #main {
+  body.layout--single:not(.portal-home):not(.portal-archive) #main {
     display: grid;
     grid-template-columns: minmax(248px, 288px) minmax(0, 1fr);
     column-gap: clamp(20px, 3vw, 40px);
     align-items: start;
   }
 
-  body.layout--single.profile-gap-match #main > .sidebar {
+  body.layout--single:not(.portal-home):not(.portal-archive) #main > .sidebar {
     float: none !important;
     width: 100% !important;
     margin: 0;
@@ -69,38 +69,13 @@ h1, h2, h3, h4 {
     overflow-x: hidden;
   }
 
-  body.layout--single.profile-gap-match #main > .page {
+  body.layout--single:not(.portal-home):not(.portal-archive) #main > .page {
     float: none !important;
     width: auto !important;
     min-width: 0;
     margin: 0;
     padding-left: 0;
     clear: none !important;
-  }
-
-  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .sidebar {
-    margin-right: 16px;
-  }
-
-  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match):not(.project) #main > .sidebar {
-    margin-right: clamp(20px, 2.8vw, 36px);
-  }
-
-  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .page {
-    min-width: 0;
-    padding-left: 0;
-  }
-
-  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .page .page__inner-wrap {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    max-width: none !important;
-  }
-
-  body.layout--single:not(.portal-home):not(.portal-archive):not(.profile-gap-match) #main > .page .page__content {
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    max-width: 980px;
   }
 }
 
@@ -115,11 +90,11 @@ h1, h2, h3, h4 {
     margin-left: -8px;
   }
 
-  body.layout--single.profile-gap-match #main {
+  body.layout--single:not(.portal-home):not(.portal-archive) #main {
     column-gap: clamp(24px, 3.2vw, 52px);
   }
 
-  body.layout--single.profile-gap-match #main > .sidebar {
+  body.layout--single:not(.portal-home):not(.portal-archive) #main > .sidebar {
     margin-left: -8px;
   }
 }
