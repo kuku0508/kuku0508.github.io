@@ -166,7 +166,7 @@ PageRank 是基於隨機遊走理論，
 代表該區域形成明顯的生活圈，
 例如住宅區或校園周邊。
 
-## 
+## 更新
 
 <div class="map-credit">
   Map rendering generated via MapToPoster.  
