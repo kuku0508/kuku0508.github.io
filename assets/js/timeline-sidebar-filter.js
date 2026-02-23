@@ -199,12 +199,21 @@
 
         var groupItems = Array.from(group.querySelectorAll(".timeline-item[data-kind]"));
         var visibleInYear = 0;
+        var visibleArticlesInYear = 0;
+        var visibleProjectsInYear = 0;
         groupItems.forEach(function (item) {
-          if (visibilityMap.get(item)) visibleInYear += 1;
+          if (!visibilityMap.get(item)) return;
+
+          visibleInYear += 1;
+          if (item.dataset.kind === "article") visibleArticlesInYear += 1;
+          if (item.dataset.kind === "project") visibleProjectsInYear += 1;
         });
 
-        var countNode = group.querySelector("[data-timeline-year-count]");
-        if (countNode) countNode.textContent = String(visibleInYear);
+        var articleCountNode = group.querySelector("[data-timeline-year-article-count]");
+        if (articleCountNode) articleCountNode.textContent = String(visibleArticlesInYear);
+
+        var projectCountNode = group.querySelector("[data-timeline-year-project-count]");
+        if (projectCountNode) projectCountNode.textContent = String(visibleProjectsInYear);
 
         if (visibleInYear > 0) {
           group.hidden = false;

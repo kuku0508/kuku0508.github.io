@@ -1,16 +1,13 @@
 ---
 layout: single
-title: "時間軸"
+title: "文章與專案時間軸"
 permalink: /archives/
 classes: wide portal-archive timeline-page
 ---
 
 <div class="portal-shell">
   <section class="portal-card timeline-panel">
-    <h1 class="portal-card__title">時間軸</h1>
-
     <section class="timeline-stream">
-      <h2 class="timeline-stream__title">文章與專案時間軸</h2>
       <p class="timeline-stream__desc">左側 sidebar 可分別設定文章與專案標籤篩選（各自 OR / AND）。</p>
 
       {% assign year_string = "" %}
@@ -31,6 +28,8 @@ classes: wide portal-archive timeline-page
           {% if year != "" %}
             {% assign merged_rows = "" %}
             {% assign year_total = 0 %}
+            {% assign year_article_total = 0 %}
+            {% assign year_project_total = 0 %}
 
             {% for post in site.posts %}
               {% assign post_year = post.date | date: "%Y" %}
@@ -45,6 +44,7 @@ classes: wide portal-archive timeline-page
                 {% assign post_row = post.date | date: "%Y-%m-%d" | append: "||article||" | append: post.url | append: "||" | append: post.title | append: "||" | append: post_tokens | strip %}
                 {% assign merged_rows = merged_rows | append: post_row | append: "%%" %}
                 {% assign year_total = year_total | plus: 1 %}
+                {% assign year_article_total = year_article_total | plus: 1 %}
               {% endif %}
             {% endfor %}
 
@@ -62,6 +62,7 @@ classes: wide portal-archive timeline-page
                   {% assign project_row = project.date | append: "||project||" | append: project.url | append: "||" | append: project.title | append: "||" | append: project_tokens | strip %}
                   {% assign merged_rows = merged_rows | append: project_row | append: "%%" %}
                   {% assign year_total = year_total | plus: 1 %}
+                  {% assign year_project_total = year_project_total | plus: 1 %}
                 {% endif %}
               {% endif %}
             {% endfor %}
@@ -71,7 +72,14 @@ classes: wide portal-archive timeline-page
               <section class="timeline-year" data-timeline-year>
                 <h3 class="timeline-year__title">
                   <span>{{ year }}</span>
-                  <span class="timeline-year__count" data-timeline-year-count>{{ year_total }}</span>
+                  <span class="timeline-year__counts">
+                    <span class="timeline-year__count timeline-year__count--article">
+                      文 <span data-timeline-year-article-count>{{ year_article_total }}</span>
+                    </span>
+                    <span class="timeline-year__count timeline-year__count--project">
+                      專 <span data-timeline-year-project-count>{{ year_project_total }}</span>
+                    </span>
+                  </span>
                 </h3>
                 <ul class="timeline-list">
                   {% for item in merged_items %}
