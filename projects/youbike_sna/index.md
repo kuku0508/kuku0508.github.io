@@ -101,7 +101,8 @@ YouBike的出現讓我不必再買自行車，
 
 </div>
 
-其中$w_{ij}$站點 i 到站點 j 之間的流量，$w_{ji}$為站點 j 到站點 i 之間的流量。  
+其中$w_{ij}$站點 i 到站點 j 之間的流量，  
+$w_{ji}$為站點 j 到站點 i 之間的流量。  
 
 <div class="formula-box">
   <div class="formula-label">Weighted In-Degree</div>
@@ -123,14 +124,20 @@ YouBike的出現讓我不必再買自行車，
 
 ### 介數中心度（Betweenness Centrality）
 介數中心度用來衡量一個節點位於多少條最短路徑之上。  
-一個節點經常出現在其他節點之間的最短路徑中，
-則它具有較高的中介能力。
+一個節點經常出現在其他節點之間的最短路徑中，  
+反映其在城市交通流動中對整體系統連通與流量傳遞的影響力。
 
-**在本專案中的意義：**  
-高介數站點往往是轉運節點，
-例如捷運站周邊的 YouBike 站點。  
-它們在不同生活圈之間扮演橋樑角色，
-連結多個社群。
+<div class="formula-box">
+  <div class="formula-label">Betweenness Centrality</div>
+
+  $$
+  g(v)=\sum_{s\neq v\neq t}\frac{\sigma_{st}(v)}{\sigma_{st}}
+  $$
+
+</div>
+
+其中$\sigma_{st}(v)$為節點 s 到節點 t 會經過節點 v 最短路經之流量，  
+$\sigma_{st}$為節點 s 到節點 t 最短路經之流量。
 
 ### 特徵向量中心度（Eigenvector Centrality）
 
