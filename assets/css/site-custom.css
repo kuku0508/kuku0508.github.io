@@ -549,17 +549,19 @@ h1, h2, h3, h4 {
 
 .timeline-page .timeline-item__link {
   color: #2b4352;
-  text-decoration: none !important;
-  border-bottom: 0;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  border-bottom: 0 !important;
   line-height: 1.6;
 }
 
 .timeline-page .timeline-item__link:hover,
 .timeline-page .timeline-item__link:focus-visible {
-  text-decoration: underline;
+  text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
-  border-bottom: 0;
+  border-bottom: 0 !important;
 }
 
 .timeline-page .timeline-item__kind {
@@ -703,6 +705,11 @@ h1, h2, h3, h4 {
   transform-origin: center top;
   transition: opacity 280ms ease, transform 280ms ease;
   will-change: opacity, transform;
+}
+
+[data-filter-items] > .post-item:hover,
+[data-filter-items] > .project-card:hover {
+  transform: translateY(-2px);
 }
 
 .is-entering {
