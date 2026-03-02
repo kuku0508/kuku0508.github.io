@@ -22,9 +22,9 @@ classes: wide portal-home
         <div class="portal-list">
           {% if site.posts and site.posts.size > 0 %}
             {% for post in site.posts limit: 6 %}
-            <article class="post-item">
+            <article class="post-item" data-clickable-card>
               <h3 class="post-item__title">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                <a href="{{ post.url | relative_url }}" data-card-primary>{{ post.title }}</a>
               </h3>
               <div class="post-item__meta">
                 {{ post.date | date: "%Y-%m-%d" }}
@@ -52,23 +52,23 @@ classes: wide portal-home
       <section class="portal-card">
         <h2 class="portal-card__title">精選作品</h2>
         <div class="portal-grid-2">
-          <article class="project-mini">
-            <h3><a href="{{ '/projects/youbike_sna/' | relative_url }}">YouBike 站點互動網路與生活圈辨識</a></h3>
+          <article class="project-mini" data-clickable-card>
+            <h3><a href="{{ '/projects/youbike_sna/' | relative_url }}" data-card-primary>YouBike 站點互動網路與生活圈辨識</a></h3>
             <p>用 SNA 與社群偵測理解站點角色，並結合地圖視覺化觀察城市流動結構。</p>
             <a class="chip" href="{{ '/projects/youbike_sna/' | relative_url }}">查看專案</a>
           </article>
-          <article class="project-mini">
-            <h3><a href="{{ '/projects/survival_analysis/' | relative_url }}">Survival Analysis（設限資料）</a></h3>
+          <article class="project-mini" data-clickable-card>
+            <h3><a href="{{ '/projects/survival_analysis/' | relative_url }}" data-card-primary>Survival Analysis（設限資料）</a></h3>
             <p>整理含設限資料的分析流程，從資料處理到模型建構與結果解讀。</p>
             <a class="chip" href="{{ '/projects/survival_analysis/' | relative_url }}">查看專案</a>
           </article>
-          <article class="project-mini">
-            <h3><a href="{{ '/projects/kepler/' | relative_url }}">Kepler 望遠鏡資料集分析</a></h3>
+          <article class="project-mini" data-clickable-card>
+            <h3><a href="{{ '/projects/kepler/' | relative_url }}" data-card-primary>Kepler 望遠鏡資料集分析</a></h3>
             <p>針對時間序列資料進行清理、特徵工程與探索性分析，建立可重現流程。</p>
             <a class="chip" href="{{ '/projects/kepler/' | relative_url }}">查看專案</a>
           </article>
-          <article class="project-mini">
-            <h3><a href="{{ '/projects/' | relative_url }}">更多作品</a></h3>
+          <article class="project-mini" data-clickable-card>
+            <h3><a href="{{ '/projects/' | relative_url }}" data-card-primary>更多作品</a></h3>
             <p>完整專案列表包含分析背景、技術方法、實作重點與延伸想法。</p>
             <a class="chip" href="{{ '/projects/' | relative_url }}">前往專案總覽</a>
           </article>

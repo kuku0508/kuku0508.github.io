@@ -23,6 +23,15 @@ h1, h2, h3, h4 {
   font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
 }
 
+[data-clickable-card] {
+  cursor: pointer;
+}
+
+[data-clickable-card]:focus-visible {
+  outline: 2px solid var(--portal-accent-dark);
+  outline-offset: 3px;
+}
+
 @media (min-width: 64em) {
   body.layout--single.wide.portal-archive #main,
   body.layout--single.wide.portal-home #main {

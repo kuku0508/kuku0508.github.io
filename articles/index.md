@@ -49,9 +49,9 @@ classes: wide portal-archive
               {% endfor %}
             {% endif %}
           {% endcapture %}
-          <article class="post-item" data-tags="{{ post_tokens | strip }}">
+          <article class="post-item" data-tags="{{ post_tokens | strip }}" data-clickable-card>
             <h2 class="post-item__title">
-              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <a href="{{ post.url | relative_url }}" data-card-primary>{{ post.title }}</a>
             </h2>
             <div class="post-item__meta">
               {{ post.date | date: "%Y-%m-%d" }}
