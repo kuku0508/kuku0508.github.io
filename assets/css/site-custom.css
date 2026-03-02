@@ -16,6 +16,13 @@ h1, h2, h3, h4 {
   font-family: "Noto Serif TC", "PMingLiU", serif;
 }
 
+.project h1,
+.project h2,
+.project h3,
+.project h4 {
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
 @media (min-width: 64em) {
   body.layout--single.wide.portal-archive #main,
   body.layout--single.wide.portal-home #main {
