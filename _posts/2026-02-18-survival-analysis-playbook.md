@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "【示範】Survival Analysis 工作流（佔位文章）"
+title: "【示範】佔位文章二"
 date: 2026-02-18 21:10:00 +0800
 categories: [方法筆記, 統計建模]
 tags: [Survival Analysis, Cox Model, 設限資料, 模型診斷]

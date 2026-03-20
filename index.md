@@ -10,8 +10,8 @@ classes: wide portal-home
   <section class="portal-hero">
     <h1 class="portal-hero__title">Kuku's Portfolio & Notes</h1>
     <p class="portal-hero__lead">
-      這個網站用來整理我的作品與文章，主題聚焦在資料分析、預測建模、模型解釋與視覺化。
-      你可以先看最新文章，再到專案頁看完整案例與方法細節。
+      這個網站用來整理我的作品與文章，主題聚焦在資料分析相關的內容，但當然也可能有一些雜七雜八的東西。  
+      希望你可以找到你所好奇的東西。
     </p>
   </section>
 
@@ -58,14 +58,14 @@ classes: wide portal-home
             <a class="chip" href="{{ '/projects/youbike_sna/' | relative_url }}">查看專案</a>
           </article>
           <article class="project-mini" data-clickable-card>
-            <h3><a href="{{ '/projects/survival_analysis/' | relative_url }}" data-card-primary>Survival Analysis（設限資料）</a></h3>
-            <p>整理含設限資料的分析流程，從資料處理到模型建構與結果解讀。</p>
-            <a class="chip" href="{{ '/projects/survival_analysis/' | relative_url }}">查看專案</a>
-          </article>
-          <article class="project-mini" data-clickable-card>
             <h3><a href="{{ '/projects/kepler/' | relative_url }}" data-card-primary>Kepler 望遠鏡資料集分析</a></h3>
             <p>針對時間序列資料進行清理、特徵工程與探索性分析，建立可重現流程。</p>
             <a class="chip" href="{{ '/projects/kepler/' | relative_url }}">查看專案</a>
+          <article class="project-mini" data-clickable-card>
+            <h3><a href="{{ '/projects/survival_analysis/' | relative_url }}" data-card-primary>Survival Analysis</a></h3>
+            <p>整理含設限資料的分析流程，從資料處理到模型建構與結果解讀。</p>
+            <a class="chip" href="{{ '/projects/survival_analysis/' | relative_url }}">查看專案</a>
+          </article>
           </article>
           <article class="project-mini" data-clickable-card>
             <h3><a href="{{ '/projects/' | relative_url }}" data-card-primary>更多作品</a></h3>

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "【示範】資料敘事 Checklist（佔位文章）"
+title: "【示範】佔位文章一"
 date: 2026-02-15 14:20:00 +0800
 categories: [實務筆記, 資料溝通]
 tags: [Data Storytelling, 視覺化, 決策支援]
