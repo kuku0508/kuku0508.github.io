@@ -3,7 +3,7 @@ layout: single
 title: "【示範】佔位文章二"
 date: 2026-02-18 21:10:00 +0800
 categories: [方法筆記, 統計建模]
-tags: [Survival Analysis, Cox Model, 設限資料, 模型診斷]
+tags: [tag5,tag6,tag7,tag8]
 excerpt: "此篇為示範用佔位文章，僅用於測試文章清單、分類與標籤篩選。"
 ---
 
