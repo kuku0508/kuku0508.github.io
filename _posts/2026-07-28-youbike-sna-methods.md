@@ -14,6 +14,15 @@ classes: article-compact
 
 如果你想先看研究問題與發現，可回到[YouBike 騎乘網絡與高風險路段辨識](/projects/youbike_sna/)。
 
+<div class="method-pipeline" role="img" aria-label="分析流程：旅次資料、網絡建構、站點分群、路徑模擬、道路風險">
+  <div><span>01</span><strong>旅次資料</strong><small>借車站 → 還車站</small></div>
+  <div><span>02</span><strong>網絡建構</strong><small>節點、方向與權重</small></div>
+  <div><span>03</span><strong>結構辨識</strong><small>生活圈與站點角色</small></div>
+  <div><span>04</span><strong>路徑模擬</strong><small>OD 旅次分配到道路</small></div>
+  <div><span>05</span><strong>風險評估</strong><small>CBI 與每千旅次 EPDO</small></div>
+</div>
+
+
 ## 1. 把旅次轉換成有向加權網絡
 
 一筆 YouBike 租借紀錄包含起點站與終點站。將所有旅次彙整為起訖矩陣（Origin–Destination matrix, OD matrix）後，可以定義：
@@ -43,6 +52,14 @@ $$
 加權度回答的是「這個站有多忙」，但不能直接回答它是否位於跨區交通的關鍵位置。兩個站的總流量相同，其中一個可能只服務鄰近社區，另一個卻連接多個彼此分離的生活圈。
 
 ## 3. 中心性：重要不只等於流量大
+
+<div class="metric-visual-grid" aria-label="四種網絡指標比較">
+  <div><b>加權度</b><span>流量</span><p>這個站有多忙？</p></div>
+  <div><b>介數中心度</b><span>橋樑</span><p>是否連接不同區域？</p></div>
+  <div><b>PageRank</b><span>核心</span><p>是否被重要站點指向？</p></div>
+  <div><b>群聚係數</b><span>局部密度</span><p>鄰近站點是否緊密互連？</p></div>
+</div>
+
 
 ### 介數中心度
 
@@ -110,6 +127,12 @@ $$
 
 在本專案中，Louvain 得到 <span class="math-inline" markdown="0">\(Q=0.665\)</span> 與 11 個生活圈。這些社群大致具有空間連續性，但形成依據是實際旅次關係，不是行政區界線。
 
+<figure class="method-figure">
+  <img src="/projects/youbike_sna/assets/louvain-communities.png" alt="Louvain 將 YouBike 站點依旅次關係分成 11 個生活圈" loading="lazy">
+  <figcaption>Louvain 的分群結果呈現 11 個大致連續的生活圈；顏色代表旅次關係形成的社群，而非行政區。</figcaption>
+</figure>
+
+
 ## 5. K-means：從指標找站點角色
 
 Louvain 回答「哪些站點彼此互動緊密」，K-means 則回答「哪些站點具有相似功能」。本專案使用流量、介數中心度、群聚係數與 PageRank 等特徵，將站點區分為：
@@ -176,6 +199,18 @@ EPDO_{1000,i}
 $$
 
 這比只看事故總數更接近「每單位暴露的嚴重度」，但分母仍是模擬流量；低流量路段也可能因少數事故產生極端比值，呈現時應同時提供事故件數與估計流量，並設定最低暴露門檻或不確定區間。
+
+<div class="method-figure-pair" aria-label="CBI 與每千旅次 EPDO 風險圖比較">
+  <figure>
+    <img src="/projects/youbike_sna/assets/weekday-cbi-risk.png" alt="YouBike 平日路段 CBI 綜合風險圖" loading="lazy">
+    <figcaption><strong>CBI</strong>：比較事故頻率與事故嚴重度的綜合排序。</figcaption>
+  </figure>
+  <figure>
+    <img src="/projects/youbike_sna/assets/weekday-epdo-risk.png" alt="YouBike 平日每千旅次 EPDO 風險圖" loading="lazy">
+    <figcaption><strong>每千旅次 EPDO</strong>：以估計騎乘量標準化事故後果。</figcaption>
+  </figure>
+</div>
+
 
 ## 10. 如何正確解讀這套方法
 
