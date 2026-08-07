@@ -1233,3 +1233,27 @@ h1, h2, h3, h4 {
     padding: 10px;
   }
 }
+
+
+/* Compact typography for long-form methodology articles */
+.article-compact .page__content {
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+.article-compact .page__content h2 {
+  font-size: 1.45em;
+  line-height: 1.4;
+}
+
+.article-compact .page__content h3 {
+  font-size: 1.2em;
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .article-compact .page__content {
+    font-size: 15px;
+    line-height: 1.72;
+  }
+}
