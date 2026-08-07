@@ -7,6 +7,7 @@ categories: [統計方法, 資料分析]
 tags: [社會網絡分析, Louvain, K-means, 交通安全, YouBike]
 excerpt: "用 YouBike 專案說明如何建立有向加權網絡、辨識生活圈與站點角色，並以 CBI、EPDO 評估道路風險。"
 math: true
+classes: article-compact
 ---
 
 在交通資料中，站點本身不是唯一重點，站點之間「如何流動」往往更能揭露城市的結構。這篇文章以 YouBike 借還車資料為例，整理本專案使用的社會網絡分析（Social Network Analysis, SNA）、社群偵測、站點分群與事故風險指標。
