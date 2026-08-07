@@ -26,7 +26,7 @@ classes: article-compact
 
 ## 2. 加權度：先看一個站有多忙
 
-站點 \\(i\\) 的加權入度是所有流入旅次之和，加權出度是所有流出旅次之和：
+站點 <span class="math-inline" markdown="0">\(i\)</span> 的加權入度是所有流入旅次之和，加權出度是所有流出旅次之和：
 
 $$
 k_i^{in}=\sum_j w_{ji},
@@ -52,7 +52,7 @@ $$
 g(v)=\sum_{s\neq v\neq t}\frac{\sigma_{st}(v)}{\sigma_{st}}
 $$
 
-其中，\\(\sigma_{st}\\) 是 \\(s\\) 到 \\(t\\) 的最短路徑數，\\(\sigma_{st}(v)\\) 是其中通過 \\(v\\) 的路徑數。數值較高的站點可能是跨生活圈的轉運橋樑；即使本身流量不是最大，一旦失去功能，也可能顯著降低網絡連通性。
+其中，<span class="math-inline" markdown="0">\(\sigma_{st}\)</span> 是 <span class="math-inline" markdown="0">\(s\)</span> 到 <span class="math-inline" markdown="0">\(t\)</span> 的最短路徑數，<span class="math-inline" markdown="0">\(\sigma_{st}(v)\)</span> 是其中通過 <span class="math-inline" markdown="0">\(v\)</span> 的路徑數。數值較高的站點可能是跨生活圈的轉運橋樑；即使本身流量不是最大，一旦失去功能，也可能顯著降低網絡連通性。
 
 需要注意：標準介數中心度是以「路徑數」而不是「經過節點的旅次流量」定義。若要把 OD 流量納入，必須明確使用需求加權的介數中心度，並說明邊的距離或成本如何設定。
 
@@ -75,7 +75,7 @@ PR(i)=\frac{1-d}{N}
 +d\sum_{j\in M(i)}\frac{PR(j)}{L(j)}
 $$
 
-\\(d\\) 常設為 0.85，\\(N\\) 是站點數，\\(M(i)\\) 是連到站點 \\(i\\) 的來源站，\\(L(j)\\) 是來源站 \\(j\\) 的外連結數。隨機跳躍避免權重永遠困在封閉循環或只進不出的節點，因此通常比直接使用特徵向量中心度更適合大型有向網絡。
+<span class="math-inline" markdown="0">\(d\)</span> 常設為 0.85，<span class="math-inline" markdown="0">\(N\)</span> 是站點數，<span class="math-inline" markdown="0">\(M(i)\)</span> 是連到站點 <span class="math-inline" markdown="0">\(i\)</span> 的來源站，<span class="math-inline" markdown="0">\(L(j)\)</span> 是來源站 <span class="math-inline" markdown="0">\(j\)</span> 的外連結數。隨機跳躍避免權重永遠困在封閉循環或只進不出的節點，因此通常比直接使用特徵向量中心度更適合大型有向網絡。
 
 ### 群聚係數
 
@@ -85,7 +85,7 @@ $$
 C_i=\frac{2E_i}{k_i(k_i-1)}
 $$
 
-它衡量站點 \\(i\\) 的鄰居彼此也互相連結的程度。高群聚係數通常對應區域內短程、緊密的移動結構。不過，有向與加權網絡存在不同版本的群聚係數；實作時應記錄套件所採用的定義，避免公式與程式結果不一致。
+它衡量站點 <span class="math-inline" markdown="0">\(i\)</span> 的鄰居彼此也互相連結的程度。高群聚係數通常對應區域內短程、緊密的移動結構。不過，有向與加權網絡存在不同版本的群聚係數；實作時應記錄套件所採用的定義，避免公式與程式結果不一致。
 
 ## 4. Louvain：從連結關係找生活圈
 
@@ -104,11 +104,11 @@ A_{ij}-\frac{k_i^{out}k_j^{in}}{m}
 \delta(c_i,c_j)
 $$
 
-\\(A_{ij}\\) 是從 \\(i\\) 到 \\(j\\) 的權重，\\(m\\) 是全網絡邊權重總和；若 \\(i\\) 與 \\(j\\) 位於同一社群，\\(\delta(c_i,c_j)=1\\)，否則為 0。
+<span class="math-inline" markdown="0">\(A_{ij}\)</span> 是從 <span class="math-inline" markdown="0">\(i\)</span> 到 <span class="math-inline" markdown="0">\(j\)</span> 的權重，<span class="math-inline" markdown="0">\(m\)</span> 是全網絡邊權重總和；若 <span class="math-inline" markdown="0">\(i\)</span> 與 <span class="math-inline" markdown="0">\(j\)</span> 位於同一社群，<span class="math-inline" markdown="0">\(\delta(c_i,c_j)=1\)</span>，否則為 0。
 
 模組度不是「分群正確率」。它衡量目前分群相較於隨機基準，是否有更多權重留在社群內。Q 值也會受到網絡密度、規模與解析度限制影響，因此不宜把固定門檻當成普遍真理。更穩健的做法是比較不同時間、不同參數與多次隨機初始化的結果。
 
-在本專案中，Louvain 得到 \\(Q=0.665\\) 與 11 個生活圈。這些社群大致具有空間連續性，但形成依據是實際旅次關係，不是行政區界線。
+在本專案中，Louvain 得到 <span class="math-inline" markdown="0">\(Q=0.665\)</span> 與 11 個生活圈。這些社群大致具有空間連續性，但形成依據是實際旅次關係，不是行政區界線。
 
 ## 5. K-means：從指標找站點角色
 
@@ -119,7 +119,7 @@ Louvain 回答「哪些站點彼此互動緊密」，K-means 則回答「哪些�
 - 社區生活圈
 - 一般末端站點
 
-由於這些指標的尺度差異很大，分群前應先標準化；極端高流量站也可能拉動群中心，最好搭配穩健縮放、離群值敏感度測試或不同初始化重複檢查。群數 \\(k\\) 除了手肘法，也可搭配輪廓係數、群組穩定性與實務可解釋性判斷。
+由於這些指標的尺度差異很大，分群前應先標準化；極端高流量站也可能拉動群中心，最好搭配穩健縮放、離群值敏感度測試或不同初始化重複檢查。群數 <span class="math-inline" markdown="0">\(k\)</span> 除了手肘法，也可搭配輪廓係數、群組穩定性與實務可解釋性判斷。
 
 ## 6. 階層式分群：比較站點的時間型態
 
@@ -135,7 +135,7 @@ $$
 \widehat{F}_e=\sum_{(i,j):e\in P_{ij}}w_{ij}
 $$
 
-\\(\widehat{F}_e\\) 是路段 \\(e\\) 的估計流量，\\(P_{ij}\\) 是 BRouter 為起訖站 \\(i,j\\) 產生的路徑。
+<span class="math-inline" markdown="0">\(\widehat{F}_e\)</span> 是路段 <span class="math-inline" markdown="0">\(e\)</span> 的估計流量，<span class="math-inline" markdown="0">\(P_{ij}\)</span> 是 BRouter 為起訖站 <span class="math-inline" markdown="0">\(i,j\)</span> 產生的路徑。
 
 這是一種「最可能路徑的暴露量近似」，不是實際車流計數。騎士可能依熟悉度、坡度、號誌、鋪面與安全感選擇不同路線，因此合理的後續檢查包括：
 
@@ -157,7 +157,7 @@ SRI_i=\frac{N_i}{\max_j N_j},
 SSI_i=\frac{EPDO_i}{\max_j EPDO_j}
 $$
 
-\\(N_i\\) 是路段 \\(i\\) 的事故件數。這個指標把兩個構面縮放到可相加的範圍，適合做同一觀測區內的相對排序；但最大值正規化容易受單一極端路段影響，且不同城市、期間的 CBI 不宜直接比較。
+<span class="math-inline" markdown="0">\(N_i\)</span> 是路段 <span class="math-inline" markdown="0">\(i\)</span> 的事故件數。這個指標把兩個構面縮放到可相加的範圍，適合做同一觀測區內的相對排序；但最大值正規化容易受單一極端路段影響，且不同城市、期間的 CBI 不宜直接比較。
 
 ## 9. EPDO：把傷亡嚴重度換成共同尺度
 
