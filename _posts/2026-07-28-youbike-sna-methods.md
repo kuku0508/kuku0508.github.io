@@ -142,6 +142,12 @@ Louvain 回答「哪些站點彼此互動緊密」，K-means 則回答「哪些�
 - 社區生活圈
 - 一般末端站點
 
+<figure class="method-figure">
+  <img src="/projects/youbike_sna/assets/kmeans-station-roles.png" alt="K-means 將 YouBike 站點分為四種功能角色" loading="lazy">
+  <figcaption>K-means 不要求地理相鄰，而是依網絡指標辨識都會核心、轉運橋樑、社區生活圈與一般末端站點。</figcaption>
+</figure>
+
+
 由於這些指標的尺度差異很大，分群前應先標準化；極端高流量站也可能拉動群中心，最好搭配穩健縮放、離群值敏感度測試或不同初始化重複檢查。群數 <span class="math-inline" markdown="0">\(k\)</span> 除了手肘法，也可搭配輪廓係數、群組穩定性與實務可解釋性判斷。
 
 ## 6. 階層式分群：比較站點的時間型態
@@ -159,6 +165,12 @@ $$
 $$
 
 <span class="math-inline" markdown="0">\(\widehat{F}_e\)</span> 是路段 <span class="math-inline" markdown="0">\(e\)</span> 的估計流量，<span class="math-inline" markdown="0">\(P_{ij}\)</span> 是 BRouter 為起訖站 <span class="math-inline" markdown="0">\(i,j\)</span> 產生的路徑。
+
+<figure class="method-figure">
+  <img src="/projects/youbike_sna/assets/holiday-route-heatmap.png" alt="BRouter 模擬的 YouBike 假日騎乘熱點路網" loading="lazy">
+  <figcaption>將 OD 旅次權重累加到 BRouter 模擬路徑後，可由綠至紅觀察估計流量較高的道路廊道。</figcaption>
+</figure>
+
 
 這是一種「最可能路徑的暴露量近似」，不是實際車流計數。騎士可能依熟悉度、坡度、號誌、鋪面與安全感選擇不同路線，因此合理的後續檢查包括：
 
