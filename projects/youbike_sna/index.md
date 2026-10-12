@@ -1,17 +1,15 @@
 ---
-- id: youbike_sna
-  title: "臺北 YouBike 路網與道路風險分析"
-  url: /projects/youbike_sna/
-  date: "2026-10-12"
-  summary: "整合 1.09 億筆 YouBike 旅次、BRouter 路徑重建與交通事故資料，建立道路層級騎乘暴露量與風險檢視流程。"
-  tags:
-    - 資料分析
-    - 地理空間分析
-    - 網路分析
-    - Python
-  image: /projects/youbike_sna/assets/cover.png
----
+title: "臺北 YouBike 路網與道路風險分析"
+permalink: /projects/youbike_sna/
+layout: single
+excerpt: "整合 1.09 億筆 YouBike 旅次、BRouter 路徑重建與交通事故資料，建立道路層級騎乘暴露量與風險檢視流程。"
 
+header:
+  overlay_image: /projects/youbike_sna/assets/cover.png
+  overlay_filter: 0.55
+
+classes: wide project
+---
 YouBike 解決了許多人的「最後一哩路」，卻也把騎士帶進一套不連續的自行車路網：自行車優先道突然中斷、騎士在人行道與汽機車道間切換，以及路口缺乏清楚的路權銜接。
 
 這份團隊專案把 YouBike 站點與旅次建成一張有向加權網絡，結合社群偵測、站點角色分群、BRouter 路徑模擬與交通事故風險指標，回答一個具體問題：
