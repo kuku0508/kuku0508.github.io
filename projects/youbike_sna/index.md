@@ -167,10 +167,17 @@ CBI、EPDO／1,000 estimated trips 與 high-flow flag 分別回答不同問題�
 ## 四個代表性道路案例
 
 CBI-guided review 將需要人工檢視的範圍縮小後，再結合道路環境進行人工判讀，最後整理出四種代表性情境。
+> **街景影像說明：** 下列影像僅用於理解案例的道路空間脈絡。影像拍攝時間可能與 2023–2024 年事故資料期間不同，因此不作為事故因果關係的判定依據。
 
 ### A｜民權東路二段
 
 **地下道出入口與自行車通行空間**
+<figure>
+  <img src="/projects/youbike_sna/assets/case-a-minquan.png" alt="民權東路二段地下道出入口與自行車通行空間">
+  <figcaption>
+    道路現況觀察：地下道出入口、自行車通行空間與路口轉向動線距離接近，周邊亦有商業活動與行人使用需求。
+  </figcaption>
+</figure>
 
 此處本身已有相當程度的自行車通行空間，但地下道出入口、行人活動、店家空間與自行車動線彼此非常接近。
 
@@ -185,6 +192,12 @@ CBI-guided review 將需要人工檢視的範圍縮小後，再結合道路環�
 ### B｜百齡橋橋頭
 
 **自行車上橋入口導引**
+<figure>
+  <img src="/projects/youbike_sna/assets/case-b-bailing-bridge.png" alt="百齡橋橋頭自行車上橋入口道路環境">
+  <figcaption>
+    道路現況觀察：從主要接近方向觀察，自行車上橋入口在較遠距離不易辨識，接近入口後通行位置才較為明確。
+  </figcaption>
+</figure>
 
 大型多車道路環境旁已有自行車上橋入口，但入口本身不容易被提前辨識。
 
@@ -201,6 +214,12 @@ CBI-guided review 將需要人工檢視的範圍縮小後，再結合道路環�
 ### C｜基隆路二段
 
 **高車流、公車站與 YouBike 出入口交織**
+<figure>
+  <img src="/projects/youbike_sna/assets/case-c-keelung-road.png" alt="基隆路二段 YouBike 站點與道路通行環境">
+  <figcaption>
+    道路現況觀察：YouBike 站點出入口鄰近外側車流與人行空間，周邊植栽亦可能影響部分方向的視線條件。
+  </figcaption>
+</figure>
 
 此處為多車道、高流量道路環境，YouBike 站點出口與公車站及外側車流距離較近。
 
@@ -216,6 +235,12 @@ CBI-guided review 將需要人工檢視的範圍縮小後，再結合道路環�
 ### D｜大度路一段
 
 **長距離混合通行與退出選擇受限**
+<figure>
+  <img src="/projects/youbike_sna/assets/case-d-dadu-road.png" alt="大度路一段長距離多車道路環境">
+  <figcaption>
+    道路現況觀察：道路筆直、距離長且車道數多，呈現長距離混合通行與速度差需要進一步檢視的道路脈絡。
+  </figcaption>
+</figure>
 
 道路筆直且距離長，自行車可能長時間與較高速車流共享道路空間。
 
