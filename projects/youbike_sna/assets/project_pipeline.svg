@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto" viewBox="0 0 1200 590" style="max-width:1200px" role="img" aria-labelledby="title desc">
+  <title id="title">YouBike 路網與道路風險重建流程</title>
+  <desc id="desc">從原始旅次、清理、OD 網路、BRouter 路由、微路段暴露量、事故重建、空間配對與指標，到人工案例檢視的九階段流程。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7890a8"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#153f67" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg{fill:#f8fafc}.title{font:700 27px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;fill:#172b3a}.subtitle{font:14px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;fill:#586a78}.section{font:700 13px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;letter-spacing:.08em;fill:#667788}.box{fill:#fff;stroke:#bdd0df;stroke-width:1.4;rx:12;filter:url(#shadow)}.box-accent{fill:#eef6fb;stroke:#76a8c7}.box-human{fill:#fff7e8;stroke:#e6b75c}.step{font:700 16px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;fill:#153f67}.detail{font:12.5px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;fill:#425466}.metric{font:700 12.5px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;fill:#2d719f}.arrow{fill:none;stroke:#7890a8;stroke-width:2.2;marker-end:url(#arrow)}.divider{stroke:#dbe5ec;stroke-width:1}.badge{fill:#153f67}.badgeText{font:700 12px 'Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;fill:#fff;text-anchor:middle;dominant-baseline:middle}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="590" rx="18"/>
+  <text class="title" x="50" y="48">從一億筆旅次到四個人工道路案例</text>
+  <text class="subtitle" x="50" y="74">可重現資料工程 × 路網分析 × 空間配對 × human-in-the-loop interpretation</text>
+
+  <text class="section" x="50" y="116">旅次與網路</text>
+  <line class="divider" x1="50" y1="126" x2="1150" y2="126"/>
+  <rect class="box" x="50" y="145" width="300" height="105"/>
+  <circle class="badge" cx="78" cy="172" r="14"/><text class="badgeText" x="78" y="172">1</text>
+  <text class="step" x="103" y="177">原始 YouBike 旅次</text>
+  <text class="detail" x="75" y="207">2023/01–2025/03 月檔與 source index</text>
+  <text class="metric" x="75" y="231">109,713,899 parsed records</text>
+  <path class="arrow" d="M350 198 H440"/>
+  <rect class="box" x="450" y="145" width="300" height="105"/>
+  <circle class="badge" cx="478" cy="172" r="14"/><text class="badgeText" x="478" y="172">2</text>
+  <text class="step" x="503" y="177">清理、QA 與 station identity</text>
+  <text class="detail" x="475" y="207">Fail-closed parser、quarantine、守恆</text>
+  <text class="metric" x="475" y="231">92,699,907 core accepted trips</text>
+  <path class="arrow" d="M750 198 H840"/>
+  <rect class="box box-accent" x="850" y="145" width="300" height="105"/>
+  <circle class="badge" cx="878" cy="172" r="14"/><text class="badgeText" x="878" y="172">3</text>
+  <text class="step" x="903" y="177">OD network 與站點分析</text>
+  <text class="detail" x="875" y="207">Centrality、Louvain、K-means、hierarchical</text>
+  <text class="metric" x="875" y="231">2,782 nodes · 1,125,519 edges</text>
+
+  <text class="section" x="50" y="299">道路暴露量</text>
+  <line class="divider" x1="50" y1="309" x2="1150" y2="309"/>
+  <rect class="box" x="50" y="328" width="300" height="105"/>
+  <circle class="badge" cx="78" cy="355" r="14"/><text class="badgeText" x="78" y="355">4</text>
+  <text class="step" x="103" y="360">BRouter 路徑重建</text>
+  <text class="detail" x="75" y="390">有向 OD、cache、checkpoint、resume</text>
+  <text class="metric" x="75" y="414">1,100,919 production routes</text>
+  <path class="arrow" d="M350 381 H440"/>
+  <rect class="box box-accent" x="450" y="328" width="300" height="105"/>
+  <circle class="badge" cx="478" cy="355" r="14"/><text class="badgeText" x="478" y="355">5</text>
+  <text class="step" x="503" y="360">方向中立微路段暴露量</text>
+  <text class="detail" x="475" y="390">正反向幾何合併、總／平日／假日權重</text>
+  <text class="metric" x="475" y="414">106,049 physical microsegments</text>
+  <path class="arrow" d="M750 381 H840"/>
+  <rect class="box" x="850" y="328" width="300" height="105"/>
+  <circle class="badge" cx="878" cy="355" r="14"/><text class="badgeText" x="878" y="355">6</text>
+  <text class="step" x="903" y="360">事故實體重建</text>
+  <text class="detail" x="875" y="390">斑點圖 × 當事者資料 × severity</text>
+  <text class="metric" x="875" y="414">46,586 canonical accidents</text>
+
+  <text class="section" x="50" y="482">風險檢視與人工判讀</text>
+  <line class="divider" x1="50" y1="492" x2="1150" y2="492"/>
+  <rect class="box" x="50" y="511" width="300" height="58"/>
+  <circle class="badge" cx="78" cy="540" r="14"/><text class="badgeText" x="78" y="540">7</text>
+  <text class="step" x="103" y="536">空間配對</text>
+  <text class="detail" x="103" y="556">39,711 matched accidents</text>
+  <path class="arrow" d="M350 540 H440"/>
+  <rect class="box box-accent" x="450" y="511" width="300" height="58"/>
+  <circle class="badge" cx="478" cy="540" r="14"/><text class="badgeText" x="478" y="540">8</text>
+  <text class="step" x="503" y="536">EPDO／SRI／SSI／CBI</text>
+  <text class="detail" x="503" y="556">High-flow presentation universe</text>
+  <path class="arrow" d="M750 540 H840"/>
+  <rect class="box box-human" x="850" y="511" width="300" height="58"/>
+  <circle class="badge" cx="878" cy="540" r="14"/><text class="badgeText" x="878" y="540">9</text>
+  <text class="step" x="903" y="536">四個人工道路案例</text>
+  <text class="detail" x="903" y="556">可能機制與改善方向</text>
+</svg>

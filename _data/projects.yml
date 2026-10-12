@@ -1,12 +1,13 @@
 - id: youbike_sna
-  title: "YouBike 站點互動網路與生活圈辨識"
+  title: "臺北 YouBike 路網與道路風險分析"
   url: /projects/youbike_sna/
-  date: "2026-02-20"
-  summary: "以 2023-2025 站點流量與旅次建構網路，透過 SNA 與社群偵測辨識站點角色，並用地圖視覺化呈現生活圈與交通節點特性。"
+  date: "2026-10-12"
+  summary: "整合 1.09 億筆 YouBike 旅次、BRouter 路徑重建與交通事故資料，建立道路層級騎乘暴露量與風險檢視流程。"
   tags:
-    - SNA
-    - 社群偵測
-    - 視覺化
+    - 資料分析
+    - 地理空間分析
+    - 網路分析
+    - Python
   image: /projects/youbike_sna/assets/cover.png
 
 - id: survival_analysis
