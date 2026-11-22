@@ -6,11 +6,12 @@ classes: wide portal-archive projects-page
 ---
 
 <div class="portal-shell">
+  {% assign visible_projects = site.data.projects | where_exp: "project", "project.hidden != true" %}
   <section class="portal-card">
     <h1 class="portal-card__title">專案作品集</h1>
     <p class="post-item__excerpt">可透過標籤勾選快速篩選，預覽後可直接點進專案頁。</p>
 
-    {% if site.data.projects and site.data.projects.size > 0 %}
+    {% if visible_projects and visible_projects.size > 0 %}
     <section class="tag-filter" data-filter-scope="projects">
       <div class="tag-filter__top">
         <strong class="tag-filter__label">標籤篩選</strong>
@@ -26,7 +27,7 @@ classes: wide portal-archive projects-page
       <p class="filter-summary" data-filter-count></p>
 
       {% assign project_tag_string = "" %}
-      {% for project in site.data.projects %}
+      {% for project in visible_projects %}
         {% for tag in project.tags %}
           {% assign project_tag_string = project_tag_string | append: tag | append: "||" %}
         {% endfor %}
@@ -37,7 +38,7 @@ classes: wide portal-archive projects-page
         {% for tag_name in project_tags %}
           {% if tag_name != "" %}
             {% assign project_tag_count = 0 %}
-            {% for project in site.data.projects %}
+            {% for project in visible_projects %}
               {% if project.tags contains tag_name %}
                 {% assign project_tag_count = project_tag_count | plus: 1 %}
               {% endif %}
@@ -52,7 +53,7 @@ classes: wide portal-archive projects-page
       </div>
 
       <div class="projects-grid" data-filter-items>
-        {% for project in site.data.projects %}
+        {% for project in visible_projects %}
         {% capture project_tokens %}
           {% if project.tags and project.tags.size > 0 %}
             {% for tag in project.tags %}
@@ -101,3 +102,4 @@ classes: wide portal-archive projects-page
     {% endif %}
   </section>
 </div>
+
