@@ -1,6 +1,7 @@
 {% assign profile = site.author %}
 {% assign post_total = site.posts | size %}
-{% assign project_total = site.data.projects | size %}
+{% assign visible_projects = site.data.projects | where_exp: "project", "project.hidden != true" %}
+{% assign project_total = visible_projects | size %}
 {% assign color_code = profile.favorite_color | default: "#5DC2D4" %}
 {% assign color_code_display = color_code | remove: "#" %}
 {% assign profile_url = profile.url | default: site.url | default: "/" %}
@@ -186,7 +187,7 @@
       <p class="filter-summary" data-archive-filter-count></p>
 
       {% assign project_tag_string = "" %}
-      {% for project in site.data.projects %}
+      {% for project in visible_projects %}
         {% for tag in project.tags %}
           {% assign project_tag_string = project_tag_string | append: tag | append: "||" %}
         {% endfor %}
@@ -207,3 +208,4 @@
     </section>
   </section>
 </div>
+
