@@ -6,6 +6,7 @@ classes: wide portal-archive timeline-page
 ---
 
 <div class="portal-shell">
+  {% assign visible_projects = site.data.projects | where_exp: "project", "project.hidden != true" %}
   <section class="portal-card timeline-panel">
     <section class="timeline-stream">
       <p class="timeline-stream__desc">左側 sidebar 可分別設定文章與專案標籤篩選（各自 OR / AND）。</p>
@@ -15,7 +16,7 @@ classes: wide portal-archive timeline-page
         {% assign post_year = post.date | date: "%Y" %}
         {% assign year_string = year_string | append: post_year | append: "||" %}
       {% endfor %}
-      {% for project in site.data.projects %}
+      {% for project in visible_projects %}
         {% if project.date %}
           {% assign project_year = project.date | slice: 0, 4 %}
           {% assign year_string = year_string | append: project_year | append: "||" %}
@@ -48,7 +49,7 @@ classes: wide portal-archive timeline-page
               {% endif %}
             {% endfor %}
 
-            {% for project in site.data.projects %}
+            {% for project in visible_projects %}
               {% if project.date %}
                 {% assign row_year = project.date | slice: 0, 4 %}
                 {% if row_year == year %}
@@ -130,3 +131,4 @@ classes: wide portal-archive timeline-page
     </section>
   </section>
 </div>
+
