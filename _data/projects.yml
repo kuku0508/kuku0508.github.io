@@ -11,6 +11,7 @@
   image: /projects/youbike_sna/assets/cover.png
 
 - id: survival_analysis
+  hidden: true
   title: "Survival Analysis（設限資料）"
   url: /projects/survival_analysis/
   date: "2026-02-18"
@@ -22,12 +23,15 @@
   image:
 
 - id: kepler
+  hidden: true
   title: "Kepler 望遠鏡資料集分析"
   url: /projects/kepler/
   date: "2026-02-15"
-  summary: "從光度時間序列資料出發，進行清理、特徵萃取與探索性分析，建立可重現的分析筆記與特徵工程流程。"
+  summary: "分析 9,178 筆 Kepler 系外行星觀測資料，以 EDA、Box-Cox 轉換與多元線性迴歸建立平衡溫度模型，並進行模型診斷與驗證。"
   tags:
-    - 時間序列
-    - 特徵工程
-    - 資料清理
+    - 資料分析
+    - 迴歸分析
+    - 模型診斷
+    - R
   image:
+
