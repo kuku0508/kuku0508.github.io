@@ -317,3 +317,8 @@ CBI-guided review 將需要人工檢視的範圍縮小後，再結合道路環�
 完整的資料清理契約、網路分析、路由重建、事故空間配對、QA、測試與研究限制可在 GitHub 查看：
 
 [查看完整 GitHub Repository](https://github.com/kuku0508/YouBike-Road-Risk-Analysis){: .btn .btn--primary }
+
+## 封面與地圖資料聲明
+
+本頁封面使用 MapToPoster 製作；地圖資料 © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)。
+
