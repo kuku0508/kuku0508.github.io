@@ -68,71 +68,8 @@ classes: wide portal-home
         </a>
       </section>
 
-      <section class="portal-card">
-        <h2 class="portal-card__title">精選作品</h2>
-
-        <div class="portal-grid-2">
-
-          <article class="project-mini" data-clickable-card>
-            <h3>
-              <a href="{{ '/projects/youbike_sna/' | relative_url }}" data-card-primary>
-                臺北 YouBike 路網與道路風險分析
-              </a>
-            </h3>
-            <p>
-              整合 1.09 億筆旅次、BRouter 路徑重建與交通事故資料，建立道路層級騎乘暴露量與風險檢視流程。
-            </p>
-            <a class="chip" href="{{ '/projects/youbike_sna/' | relative_url }}">
-              查看專案
-            </a>
-          </article>
-
-          <article class="project-mini" data-clickable-card>
-            <h3>
-              <a href="{{ '/projects/kepler/' | relative_url }}" data-card-primary>
-                Kepler 望遠鏡資料集分析
-              </a>
-            </h3>
-            <p>
-              以多元線性迴歸分析 Kepler 系外行星觀測資料，建立平衡溫度模型並進行模型診斷與驗證。
-            </p>
-            <a class="chip" href="{{ '/projects/kepler/' | relative_url }}">
-              查看專案
-            </a>
-          </article>
-
-          <article class="project-mini" data-clickable-card>
-            <h3>
-              <a href="{{ '/projects/survival_analysis/' | relative_url }}" data-card-primary>
-                Survival Analysis
-              </a>
-            </h3>
-            <p>
-              整理含設限資料的分析流程，從資料處理到模型建構與結果解讀。
-            </p>
-            <a class="chip" href="{{ '/projects/survival_analysis/' | relative_url }}">
-              查看專案
-            </a>
-          </article>
-
-          <article class="project-mini" data-clickable-card>
-            <h3>
-              <a href="{{ '/projects/' | relative_url }}" data-card-primary>
-                更多作品
-              </a>
-            </h3>
-            <p>
-              完整專案列表包含分析背景、技術方法、實作重點與延伸想法。
-            </p>
-            <a class="chip" href="{{ '/projects/' | relative_url }}">
-              前往專案總覽
-            </a>
-          </article>
-
-        </div>
-      </section>
-
     </div>
   </div>
 
 </div>
+
