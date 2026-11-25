@@ -47,13 +47,8 @@ classes: wide project
 核心網路由 **91,138,763 筆**可納入分析的旅次組成，包含 **2,782 個站點**與 **1,125,519 條有向 OD 邊**。本研究實際計算 strength、betweenness、eigenvector centrality、PageRank 與 clustering coefficient，而不只停留在 OD 次數彙整。
 
 <figure class="sna-map-figure">
-  <iframe title="Louvain 站點互動社群地圖" src="/projects/youbike_sna/assets/sna_louvain_station_map.html" loading="lazy" style="width:100%;height:760px;border:0;border-radius:12px;" allowfullscreen></iframe>
-  <figcaption class="figure-caption">Louvain 分群空間分布。各色點代表有可用座標的站點，圖例與道路底圖可互動檢視；地圖不列站名。</figcaption>
-</figure>
-
-<figure class="sna-map-figure">
-  <iframe title="K-means 四種網路角色互動地圖" src="/projects/youbike_sna/assets/sna_kmeans_station_map.html" loading="lazy" style="width:100%;height:760px;border:0;border-radius:12px;" allowfullscreen></iframe>
-  <figcaption class="figure-caption">K-means 四群空間分布。座標沿用 <code>routing-coordinate-assumption-v1</code> 的月級座標重建假設；這是呈現用途，不代表已驗證的歷史位置。</figcaption>
+  <iframe title="YouBike 站點網路分群互動地圖" src="/projects/youbike_sna/assets/sna_cluster_station_map.html" loading="eager" style="width:100%;height:850px;border:0;border-radius:12px;" allowfullscreen></iframe>
+  <figcaption class="figure-caption">同一張地圖可在右上角切換 Louvain 社群與 K-means 角色分群。各站以分群顏色標示，不列站名；道路底圖由 OpenStreetMap 提供。座標沿用 <code>routing-coordinate-assumption-v1</code> 月級座標重建假設，並非已驗證的歷史位置。</figcaption>
 </figure>
 
 ### 中心性不是同一種「重要」
