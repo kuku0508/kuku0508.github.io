@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouBike 重建路段通過量｜道路地圖</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    html,body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;color:#203946;background:#fbfcfd}
+    header{padding:14px 18px 7px}h1{font-size:clamp(19px,2.4vw,27px);line-height:1.35;margin:0 0 4px}p{margin:0;line-height:1.5}
+    .subtitle,.note{font-size:13px;color:#536a75}.legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:8px 18px 12px;font-size:12px}
+    .legend span{display:inline-flex;align-items:center;white-space:nowrap}.legend i{width:18px;height:5px;display:inline-block;margin-right:5px;border-radius:3px}
+    #map{height:620px;width:100%;background:#e8eef0}.controls{display:flex;align-items:center;gap:9px;padding:9px 18px 4px;font-size:13px}
+    .controls input{width:150px}.note{padding:7px 18px 15px}a{color:#246786}
+    @media(max-width:600px){header{padding:11px 13px 6px}.legend{padding:6px 13px 9px;gap:5px 8px;font-size:11px}#map{height:540px}.controls{padding:8px 13px 2px}.note{padding:7px 13px 13px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>2023–2024 YouBike 重建路段通過量</h1>
+    <p class="subtitle">將 BRouter 模擬路徑的 106,049 個微路段疊在 OpenStreetMap 道路底圖上；可縮放、平移及切換圖層。</p>
+  </header>
+  <div class="legend" aria-label="估計通過次數圖例">
+    <span><i style="background:#487ca9"></i>1–9</span>
+    <span><i style="background:#2a77a9"></i>10–99</span>
+    <span><i style="background:#1f6f97"></i>100–999</span>
+    <span><i style="background:#d88a36"></i>1,000–9,999</span>
+    <span><i style="background:#dc5a33"></i>10,000–99,999</span>
+    <span><i style="background:#9e243f"></i>100,000 以上</span>
+  </div>
+  <div id="map" aria-label="OpenStreetMap 道路底圖上的 YouBike 重建路段通過量" tabindex="0"></div>
+  <div class="controls"><label for="opacity">流量圖層透明度</label><input id="opacity" type="range" min="0.25" max="1" step="0.05" value="0.88"><output id="opacity-value" for="opacity">88%</output></div>
+  <p class="note">顏色分級只表示估計通過次數的數量級，不代表事故危險程度。這是經緯度對齊的影像圖層；放大後不適合逐段精確定位。BRouter 路徑不是 GPS 實測軌跡，推估通過量也不是實測車流。底圖 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap 貢獻者</a>。</p>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const bounds=[[24.894816811783368,121.3167398471588],[25.305824393537012,121.87537715284117]];
+    const map=L.map('map',{zoomControl:true,maxZoom:17});
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap 貢獻者</a>'
+    }).addTo(map);
+    const flow=L.imageOverlay('./routing-flow-overlay-2023-2024.png',bounds,{opacity:0.88,interactive:false,alt:'BRouter 重建路段通過量透明圖層'}).addTo(map);
+    L.control.layers(null,{'估計路段通過量':flow},{collapsed:false,position:'topright'}).addTo(map);
+    map.fitBounds(bounds,{padding:[14,14],maxZoom:12});
+    const opacity=document.getElementById('opacity'),value=document.getElementById('opacity-value');
+    opacity.addEventListener('input',()=>{flow.setOpacity(Number(opacity.value));value.textContent=Math.round(Number(opacity.value)*100)+'%';});
+    if('ResizeObserver' in window){new ResizeObserver(()=>map.invalidateSize({pan:false})).observe(document.getElementById('map'));}
+  </script>
+</body>
+</html>
+

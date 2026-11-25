@@ -103,8 +103,8 @@ classes: wide project
 ### 重建路段使用量的空間分布
 
 <figure>
-  <img src="/projects/youbike_sna/assets/routing-flow-2023-2024.png" alt="2023–2024 年 BRouter 重建路徑的道路微路段通過量地圖；較深的紅色表示較高的估計加權通過次數" loading="lazy">
-  <figcaption class="figure-caption">依已驗證的 106,049 個方向中立微路段繪製；顏色以對數色階表示 2023–2024 年重建路徑的加權通過次數，線寬固定。這是模擬路徑的使用量分布，不是 GPS 實測車流，也不是事故風險圖；同一旅次會通過多個路段。</figcaption>
+  <iframe title="2023–2024 YouBike 重建路段通過量互動道路地圖" src="/projects/youbike_sna/assets/routing-flow-map-2023-2024.html" loading="lazy" style="width:100%;height:810px;border:0;border-radius:12px;"></iframe>
+  <figcaption class="figure-caption">已驗證的 106,049 個方向中立微路段疊在 OpenStreetMap 道路底圖上，可縮放並調整透明度。顏色代表 2023–2024 年 BRouter 重建路徑的估計加權通過次數，不代表實測車流或事故風險；同一旅次會通過多個路段。<a href="/projects/youbike_sna/assets/routing-flow-2023-2024.png">另開靜態總覽圖</a>。</figcaption>
 </figure>
 
 ## 3｜事故配對與風險檢視
