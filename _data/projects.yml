@@ -11,27 +11,25 @@
   image: /projects/youbike_sna/assets/cover.png
 
 - id: survival_analysis
-  hidden: true
-  title: "Survival Analysis（設限資料）"
+  title: "惡性黑色素瘤術後存活分析"
   url: /projects/survival_analysis/
   date: "2026-02-18"
-  summary: "針對含設限的時間到事件資料，整理分析流程：資料處理、存活曲線、模型建構與解讀，重點放在結果可解釋性。"
+  summary: "分析 191 位歷史手術個案的黑色素瘤相關死亡時間；比較存活曲線與 Cox 危險比，並討論競爭事件及模型限制。"
   tags:
     - 存活分析
-    - 設限
-    - 模型解釋
+    - Kaplan–Meier
+    - Cox 模型
+    - R / SAS
   image:
 
 - id: kepler
-  hidden: true
-  title: "Kepler 望遠鏡資料集分析"
+  title: "Kepler 系外行星平衡溫度建模"
   url: /projects/kepler/
   date: "2026-02-15"
-  summary: "分析 9,178 筆 Kepler 系外行星觀測資料，以 EDA、Box-Cox 轉換與多元線性迴歸建立平衡溫度模型，並進行模型診斷與驗證。"
+  summary: "以 9,178 筆候選行星資料建立對數平衡溫度迴歸模型；驗證集 R² = 0.534，並檢視 K2-18b 個案推論的限制。"
   tags:
-    - 資料分析
     - 迴歸分析
     - 模型診斷
-    - R
+    - 系外行星
+    - SAS
   image:
-
