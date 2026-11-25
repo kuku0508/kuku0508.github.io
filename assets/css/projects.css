@@ -510,3 +510,64 @@ body.layout--single.wide.project .page__hero--overlay .wrapper {
     grid-template-columns: 1fr;
   }
 }
+
+/* Project image focus view */
+.project .page__content img.project-image-zoomable {
+  cursor: zoom-in;
+}
+.project .page__content img.project-image-zoomable:focus-visible {
+  outline: 3px solid #2e798b;
+  outline-offset: 5px;
+}
+.project-lightbox[hidden] { display: none; }
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 56px 20px 24px;
+  background: rgba(12, 22, 30, .9);
+}
+.project-lightbox__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+.project-lightbox__image {
+  display: block;
+  max-width: min(96vw, 1600px);
+  max-height: calc(100vh - 130px);
+  object-fit: contain;
+}
+.project-lightbox__caption {
+  margin: 12px 0 0;
+  max-width: 800px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+.project-lightbox__close {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 50%;
+  background: rgba(0,0,0,.45);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+.project-lightbox__close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
