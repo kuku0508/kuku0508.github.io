@@ -72,19 +72,20 @@ classes: wide portal-home
         <h2 class="portal-card__title">精選作品</h2>
 
         <div class="portal-list">
+          {% assign featured_projects = site.data.projects | where_exp: "project", "project.hidden != true" %}
+          {% for project in featured_projects %}
           <article class="project-mini" data-clickable-card>
             <h3>
-              <a href="{{ '/projects/youbike_sna/' | relative_url }}" data-card-primary>
-                臺北 YouBike 路網與道路風險分析
+              <a href="{{ project.url | relative_url }}" data-card-primary>
+                {{ project.title }}
               </a>
             </h3>
-            <p>
-              整合 1.09 億筆旅次、BRouter 路徑重建與交通事故資料，建立道路層級騎乘暴露量與風險檢視流程。
-            </p>
-            <a class="chip" href="{{ '/projects/youbike_sna/' | relative_url }}">
+            <p>{{ project.summary }}</p>
+            <a class="chip" href="{{ project.url | relative_url }}">
               查看專案
             </a>
           </article>
+          {% endfor %}
         </div>
       </section>
 
