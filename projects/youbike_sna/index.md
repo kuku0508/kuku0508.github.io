@@ -46,9 +46,15 @@ classes: wide project
 
 核心網路由 **91,138,763 筆**可納入分析的旅次組成，包含 **2,782 個站點**與 **1,125,519 條有向 OD 邊**。本研究實際計算 strength、betweenness、eigenvector centrality、PageRank 與 clustering coefficient，而不只停留在 OD 次數彙整。
 
-![2023–2024 YouBike 站點網路的 Louvain 社群與 K-means 角色分群](/projects/youbike_sna/assets/sna-clustering-overview.png)
+<figure class="sna-map-figure">
+  <iframe title="Louvain 站點互動社群地圖" src="/projects/youbike_sna/assets/sna_louvain_station_map.html" loading="lazy" style="width:100%;height:760px;border:0;border-radius:12px;" allowfullscreen></iframe>
+  <figcaption class="figure-caption">Louvain 分群空間分布。各色點代表有可用座標的站點，圖例與道路底圖可互動檢視；地圖不列站名。</figcaption>
+</figure>
 
-<p class="figure-caption">上排呈現 2,756 個具可用 routing coordinate 站點的空間分布；下排呈現全部 2,782 站的群規模與標準化群中心。座標僅供分群空間呈現，並沿用 <code>routing-coordinate-assumption-v1</code> 的來源限制。</p>
+<figure class="sna-map-figure">
+  <iframe title="K-means 四種網路角色互動地圖" src="/projects/youbike_sna/assets/sna_kmeans_station_map.html" loading="lazy" style="width:100%;height:760px;border:0;border-radius:12px;" allowfullscreen></iframe>
+  <figcaption class="figure-caption">K-means 四群空間分布。座標沿用 <code>routing-coordinate-assumption-v1</code> 的月級座標重建假設；這是呈現用途，不代表已驗證的歷史位置。</figcaption>
+</figure>
 
 ### 中心性不是同一種「重要」
 
