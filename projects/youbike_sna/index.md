@@ -46,14 +46,32 @@ classes: wide project
 
 核心網路由 **91,138,763 筆**可納入分析的旅次組成，包含 **2,782 個站點**與 **1,125,519 條有向 OD 邊**。本研究實際計算 strength、betweenness、eigenvector centrality、PageRank 與 clustering coefficient，而不只停留在 OD 次數彙整。
 
-| 分析 | 可重現結果 | 解讀界線 |
-| --- | --- | --- |
-| SNA 指標 | 捷運公館站（2 號出口）的 total strength 最高（1,723,023），亦為 PageRank 最高站點；大龍峒公園的 betweenness 與 eigenvector centrality 最高 | 各指標回答的「重要性」不同，不能互相取代 |
-| Louvain | **8 個 network communities**，modularity `Q = 0.63442954`；2,782 站全數且只被指派一次 | 不把社群直接命名為商業、住宅或通勤生活圈 |
-| K-means | 依原報告參考設定執行 `k = 4`，群大小為 **60／347／939／1,436**，silhouette = 0.509820 | 資料驅動 elbow 為 `k = 3`，因此 `k = 4` 是重建設定，不宣稱為最佳群數 |
-| 分層式分群 | 以平日／假日各 **2,782 × 72** 小時中心性特徵執行 Euclidean＋Ward.D2；參考切割為平日 5 群、假日 4 群 | 這是 2023–2024 重建版本，不宣稱與舊報告未知實作完全相同 |
+![2023–2024 YouBike 站點網路的 Louvain 社群與 K-means 角色分群](/projects/youbike_sna/assets/sna-clustering-overview.png)
 
-這些結果將「流量大」「位於跨區路徑」「連到重要站點」與「具有相似時間輪廓」分開觀察，也為後續道路層級分析補上站點結構脈絡。
+<p class="figure-caption">上排呈現 2,756 個具可用 routing coordinate 站點的空間分布；下排呈現全部 2,782 站的群規模與標準化群中心。座標僅供分群空間呈現，並沿用 <code>routing-coordinate-assumption-v1</code> 的來源限制。</p>
+
+### 中心性不是同一種「重要」
+
+**捷運公館站（2 號出口）**的 total strength 最高（1,723,023），亦為 PageRank 最高站點，代表它同時具有大量直接互動與較高的網路影響力；**大龍峒公園**的 betweenness 與 eigenvector centrality 最高，則更接近「位於許多最短路徑之間」及「連到其他重要節點」的結構角色。這也是本研究不以單一流量值替代完整 SNA 的原因。
+
+### Louvain：8 個互動社群，而不是預先命名的行政區
+
+Louvain 將 2,782 站完整分為 **8 個社群**，規模介於 **209–722 站**，modularity 為 **`Q = 0.63442954`**。空間圖可看到多數社群具有區域連續性，但邊界並不等同行政區；演算法依 OD 互動關係分群，因此本研究保留「network community」的中性稱呼，不事後把群組包裝成住宅區、商業區或生活圈。
+
+### K-means：分出的其實是四種網路角色強度
+
+依原報告參考設定重建 `k = 4`，四群的差異可由下方標準化群中心直接讀出：
+
+- **群 1（60 站）**：總流量、betweenness 與 PageRank 都遠高於平均，但 clustering coefficient 最低，是少數高強度、跨群連結明顯的樞紐型站點。
+- **群 2（347 站）**：各項中心性普遍高於平均、局部群聚較低，屬於次高強度的骨幹站點。
+- **群 3（939 站）**：流量與中心性接近全體平均，但群聚程度仍偏低，是網路中的中間層。
+- **群 4（1,436 站）**：流量與中心性低於平均、局部群聚反而較高，較接近大量分散的地方型站點。
+
+`k = 4` 的 silhouette 為 **0.509820**；但資料驅動的 elbow 指向 `k = 3`、silhouette 最高則在 `k = 2`。因此四群是為了重建原報告設定而保留的可解釋切法，**不是宣稱統計上唯一或最佳的群數**。
+
+### 平日與假日：站點的時間角色會重新組合
+
+分層式分群另以平日／假日各 **2,782 × 72** 個小時中心性特徵，使用 Euclidean distance＋Ward.D2，得到平日 5 群、假日 4 群。兩者的一致程度為 **ARI = 0.381598、NMI = 0.456015**：有共享結構，但不是一對一對應，表示站點在通勤日與假日可能扮演不同的時間角色。這是 2023–2024 的可重建版本，不宣稱與舊報告中未保存的實作完全相同。
 
 ## 2｜從 OD 到道路暴露量
 
@@ -86,14 +104,55 @@ classes: wide project
 
 ![CBI 引導式人工案例檢視](/projects/youbike_sna/assets/phase8_6a_case_candidate_review.png)
 
-| 案例 | 值得進一步檢視的道路脈絡 |
-| --- | --- |
-| 民權東路二段 | 地下道出入口、自行車空間、行人與店家活動的交會 |
-| 百齡橋橋頭 | 上橋入口的提前辨識、連續導引與速度差 |
-| 基隆路二段 | YouBike 出入口、公車與外側車流的匯入交織及視距 |
-| 大度路一段 | 長距離混合通行、速度差與安全退出選擇 |
+CBI 只負責縮小人工檢視範圍。下列四個案例再把微路段指標放回較大的道路位置，依序整理**資料證據、可觀察道路脈絡、可能機制與改善焦點**；它們不是 Top-N 排名，也不代表已證明事故成因。
 
-案例只提出可供現地檢視的**可能機制**，不把街景觀察或空間相關性解讀為事故因果關係。
+<div class="road-case-grid">
+  <article class="road-case-card">
+    <img src="/projects/youbike_sna/assets/case-a-minquan.png" alt="民權東路二段案例道路情境">
+    <div class="road-case-card__body">
+      <h3>A｜民權東路二段</h3>
+      <p class="road-case-card__metrics"><strong>CBI 0.8947</strong> · 17 件傷亡事故 · observed EPDO 1,989</p>
+      <p><strong>道路脈絡：</strong>地下道出口、自行車空間、行人與店家活動在短距離內交會，另有停車與外側車流干擾。</p>
+      <p><strong>可能機制：</strong>多方向互動壓縮反應距離，路側活動又增加橫向衝突的複雜度。</p>
+      <p><strong>改善焦點：</strong>出口提前導引與緩衝、行人穿越辨識、視距照明及停車干擾管理。</p>
+    </div>
+  </article>
+
+  <article class="road-case-card">
+    <img src="/projects/youbike_sna/assets/case-b-bailing-bridge.png" alt="百齡橋橋頭案例道路情境">
+    <div class="road-case-card__body">
+      <h3>B｜百齡橋橋頭</h3>
+      <p class="road-case-card__metrics"><strong>CBI 0.7895</strong> · 15 件傷亡事故 · observed EPDO 1,755</p>
+      <p><strong>道路脈絡：</strong>多車道橋梁、上坡與高交通量並存，自行車入口雖存在，但駕駛人與騎士可提早辨識的距離有限。</p>
+      <p><strong>可能機制：</strong>入口辨識偏晚，加上坡度造成的速度差，使轉向與匯入決策更集中。</p>
+      <p><strong>改善焦點：</strong>將方向資訊前移、延續鋪面標線，並提高入口的可見性與導引連續性。</p>
+    </div>
+  </article>
+
+  <article class="road-case-card">
+    <img src="/projects/youbike_sna/assets/case-c-keelung-road.png" alt="基隆路二段案例道路情境">
+    <div class="road-case-card__body">
+      <h3>C｜基隆路二段</h3>
+      <p class="road-case-card__metrics"><strong>CBI 0.3684</strong> · 7 件傷亡事故 · observed EPDO 819</p>
+      <p><strong>道路脈絡：</strong>YouBike 出入口鄰近公車停靠區，外側車流與植栽視線遮擋同時存在。</p>
+      <p><strong>可能機制：</strong>自行車匯入、公車停靠與外側車流在同一空間疊加，視距不足可能減少預判時間。</p>
+      <p><strong>改善焦點：</strong>分離或錯開公車與自行車動線、整理視線、增設緩衝等待區與連續匯入導引。</p>
+    </div>
+  </article>
+
+  <article class="road-case-card">
+    <img src="/projects/youbike_sna/assets/case-d-dadu-road.png" alt="大度路一段案例道路情境">
+    <div class="road-case-card__body">
+      <h3>D｜大度路一段</h3>
+      <p class="road-case-card__metrics"><strong>CBI 0.6316</strong> · 12 件傷亡事故 · observed EPDO 1,404</p>
+      <p><strong>道路脈絡：</strong>長直線路段採自行車與機車混合通行，速度差、超車與兩側設施不對稱同時存在。</p>
+      <p><strong>可能機制：</strong>長距離與有限退出選擇降低修正空間，混合通行則可能增加速度差與超車互動。</p>
+      <p><strong>改善焦點：</strong>增加安全退出與銜接選擇、提供進入前資訊，並檢視混合通行的超車空間與全程導引。</p>
+    </div>
+  </article>
+</div>
+
+四個案例共同顯示：**「有設施」不等於「容易辨識且可安全使用」**。入口能否提早看見、路徑是否連續、與公車／停車／行人空間如何整合，以及騎士是否能安全退出，才是人工現地檢視真正要回答的問題。這些仍是 evidence-guided 的可能機制，不把街景觀察或空間相關性解讀為事故因果關係。
 
 ## 可重現性與研究界線
 
