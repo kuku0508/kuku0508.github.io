@@ -32,21 +32,25 @@
       maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap 貢獻者</a>'
     }).addTo(map);
     const renderer=L.canvas({padding:0.5});
-    function makeLayer(points,colors,prefix){
+    function makeLayer(points,colors){
       const layer=L.layerGroup();
       points.forEach(([lat,lon,group])=>L.circleMarker([lat,lon],{
         renderer,radius:4,color:'#ffffff',weight:0.7,fillColor:colors[group-1],fillOpacity:0.92,opacity:0.95
-      }).bindTooltip(prefix+' '+group,{direction:'top',opacity:0.95,sticky:true}).addTo(layer));
+      }).addTo(layer));
       return layer;
     }
-    const louvainLayer=makeLayer(louvainPoints,louvainColors,'社群');
-    const kmeansLayer=makeLayer(kmeansPoints,kmeansColors,'群');
+    const louvainLayer=makeLayer(louvainPoints,louvainColors);
+    const kmeansLayer=makeLayer(kmeansPoints,kmeansColors);
     louvainLayer.addTo(map);
     L.control.layers({'Louvain｜8 個社群':louvainLayer,'K-means｜4 種角色':kmeansLayer},null,{position:'topright',collapsed:false}).addTo(map);
     map.on('baselayerchange',event=>{document.getElementById('legend').innerHTML=event.layer===louvainLayer?louvainLegend:kmeansLegend;});
     const bounds=[[24.90303, 121.32595], [25.29301, 121.8665]];
-    function sizeAndFit(){map.invalidateSize({pan:false});map.fitBounds(bounds,{padding:[16,16],maxZoom:13});}
-    window.addEventListener('load',()=>setTimeout(sizeAndFit,150));
-    new ResizeObserver(()=>requestAnimationFrame(()=>map.invalidateSize({pan:false}))).observe(document.getElementById('map'));
+    let initialFit=false;
+    function sizeAndFit(){
+      map.invalidateSize({pan:false});
+      if(!initialFit){map.fitBounds(bounds,{padding:[16,16],maxZoom:13});initialFit=true;}
+    }
+    window.addEventListener('load',sizeAndFit,{once:true});
+    setTimeout(sizeAndFit,350);
   </script>
 </body></html>
