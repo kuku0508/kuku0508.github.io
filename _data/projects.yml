@@ -1,8 +1,8 @@
 - id: youbike_sna
-  title: "臺北 YouBike 路網與道路風險分析"
+  title: "臺北 YouBike 站點網路與道路風險分析"
   url: /projects/youbike_sna/
   date: "2026-10-12"
-  summary: "整合 1.09 億筆 YouBike 旅次、BRouter 路徑重建與交通事故資料，建立道路層級騎乘暴露量與風險檢視流程。"
+  summary: "從 1.09 億筆 YouBike 旅次重建站點網路、道路暴露量與事故風險檢視流程。"
   tags:
     - 資料分析
     - 地理空間分析

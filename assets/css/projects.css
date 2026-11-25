@@ -168,7 +168,7 @@
 
 /* 4) Minimal Mistakes overlay hero：只在專案頁變更（沉浸感） */
 .project .page__hero--overlay {
-  min-height: 88vh;
+  min-height: clamp(460px, 68vh, 720px);
   display: flex;
   align-items: center;
   background-position: center 40%;
