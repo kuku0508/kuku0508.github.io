@@ -3,6 +3,9 @@ title: "Kepler 望遠鏡資料集分析"
 permalink: /projects/kepler/
 layout: single
 excerpt: "分析 9,178 筆 Kepler 系外行星觀測資料，以多元線性迴歸建立平衡溫度模型，並透過影響點診斷、Box-Cox 轉換與 Hold-out Validation 評估模型。"
+header:
+  overlay_image: /projects/kepler/assets/cover.png
+  overlay_filter: 0.55
 classes: wide project
 ---
 
