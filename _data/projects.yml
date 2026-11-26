@@ -23,13 +23,13 @@
   image:
 
 - id: kepler
-  title: "Kepler 系外行星平衡溫度建模"
+  title: "Kepler 望遠鏡資料集分析"
   url: /projects/kepler/
   date: "2026-02-15"
-  summary: "以 9,178 筆候選行星資料建立對數平衡溫度迴歸模型；驗證集 R² = 0.534，並檢視 K2-18b 個案推論的限制。"
+  summary: "分析 9,178 筆 Kepler 系外行星觀測資料，以多元線性迴歸、影響點診斷、Box-Cox 轉換與 Hold-out Validation 建立並評估平衡溫度模型。"
   tags:
+    - 資料分析
     - 迴歸分析
     - 模型診斷
-    - 系外行星
     - SAS
   image:

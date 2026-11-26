@@ -2,6 +2,7 @@
 layout: single
 title: "從 YouBike 旅次到道路風險：SNA、Louvain、CBI 與 EPDO 的分析方法"
 date: 2026-07-28 00:00:00 +0800
+published: false
 permalink: /articles/youbike-sna-methods/
 categories: [統計方法, 資料分析]
 tags: [社會網絡分析, Louvain, K-means, 交通安全, YouBike]

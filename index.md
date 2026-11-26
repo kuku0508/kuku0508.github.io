@@ -11,7 +11,7 @@ classes: wide portal-home
   <section class="portal-hero">
     <h1 class="portal-hero__title">Kuku's Portfolio & Notes</h1>
     <p class="portal-hero__lead">
-      這個網站用來整理我的作品與文章，主題聚焦在資料分析相關的內容，但當然也可能有一些雜七雜八的東西。  
+      這個網站用來整理我的作品與文章，主題聚焦在資料分析相關的內容，但當然也可能有一些雜七雜八的東西。
       希望你可以找到你所好奇的東西。
     </p>
   </section>

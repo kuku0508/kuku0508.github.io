@@ -56,6 +56,14 @@ classes: wide project
   <figcaption class="figure-caption">同一張地圖可在右上角切換 Louvain 社群與 K-means 角色分群。各站以分群顏色標示，不列站名；道路底圖由 OpenStreetMap 提供。座標沿用 <code>routing-coordinate-assumption-v1</code> 月級座標重建假設，並非已驗證的歷史位置。</figcaption>
 </figure>
 
+<details><summary>檢視靜態站點分群圖</summary>
+
+![Louvain 站點社群](/projects/youbike_sna/assets/sna_louvain_station_map.png)
+
+![K-means 站點角色](/projects/youbike_sna/assets/sna_kmeans_station_map.png)
+
+</details>
+
 ### 中心性不是同一種「重要」
 
 **捷運公館站（2 號出口）**的 total strength 最高（1,723,023），亦為 PageRank 最高站點，代表它同時具有大量直接互動與較高的網路影響力；**大龍峒公園**的 betweenness 與 eigenvector centrality 最高，則更接近「位於許多最短路徑之間」及「連到其他重要節點」的結構角色。這也是本研究不以單一流量值替代完整 SNA 的原因。

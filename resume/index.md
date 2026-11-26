@@ -11,9 +11,9 @@ classes: profile-gap-match
 
 ## 技能
 
-- 程式語言：R、Python、SQL
-- 分析方法：回歸模型、時間序列、Survival Analysis、社群網路分析
-- 視覺化：ggplot2、matplotlib、互動式地圖
+- 程式語言：R、Python、SQL、SAS
+- 分析方法：迴歸模型、時間序列、Survival Analysis、社群網路分析
+- 視覺化：ggplot2、matplotlib、互動式地圖（Leaflet）
 - 工作流：資料清理、特徵工程、模型診斷、結果溝通
 
 ## 專案
